@@ -2,17 +2,18 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { products, type Category, type Mood } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 
-type ShopSearch = { mood?: Mood; category?: Category };
+type ShopSearch = { mood?: Mood | undefined; category?: Category | undefined };
 
 export const Route = createFileRoute("/shop")({
   validateSearch: (search: Record<string, unknown>): ShopSearch => ({
-    mood: ["uplift", "calm", "balance", "neutral"].includes(String(search.mood))
-      ? (search.mood as Mood)
+    mood: ["uplift", "calm", "balance", "neutral"].includes(String(search["mood"]))
+      ? (search["mood"] as Mood)
       : undefined,
-    category: ["cartridge", "battery", "edible"].includes(String(search.category))
-      ? (search.category as Category)
+    category: ["cartridge", "battery", "edible"].includes(String(search["category"]))
+      ? (search["category"] as Category)
       : undefined,
   }),
+
   head: () => ({
     meta: [
       { title: "Shop All Products — Moodies" },
@@ -54,7 +55,8 @@ function Shop() {
   );
 
   const setFilter = (next: Partial<ShopSearch>) =>
-    navigate({ search: (prev) => ({ ...prev, ...next }) });
+    navigate({ search: (prev: ShopSearch) => ({ ...prev, ...next }) });
+
 
   const chip = (active: boolean) =>
     `border px-4 py-2 text-xs uppercase tracking-[0.14em] transition-colors ${
