@@ -1,8 +1,10 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { formatZar } from "@/data/products";
 import { useCart } from "@/lib/cart";
-import { saveOrder, makeOrderNumber } from "@/lib/orders";
+import { saveOrderRef } from "@/lib/orders";
+import { placeOrder } from "@/lib/orders.functions";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({
@@ -29,44 +31,52 @@ const payments = [
 function Checkout() {
   const { items, subtotal, shipping, total, clear } = useCart();
   const navigate = useNavigate();
+  const submitOrder = useServerFn(placeOrder);
   const [payment, setPayment] = useState("card");
   const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
   const field =
     "w-full border border-border bg-card px-3 py-2 text-sm outline-none focus:border-primary";
   const label = "text-[11px] uppercase tracking-[0.16em] text-muted-foreground";
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (items.length === 0) {
       setError("Your cart is empty.");
       return;
     }
     const data = new FormData(event.currentTarget);
-    const orderNumber = makeOrderNumber();
+    const email = String(data.get("email") ?? "").trim();
+    setError(null);
+    setBusy(true);
 
-    saveOrder({
-      orderNumber,
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      address: String(data.get("address") ?? ""),
-      payment,
-      items: items.map((i) => ({
-        name: i.product.name,
-        quantity: i.quantity,
-        price: i.product.price,
-      })),
-      subtotal,
-      shipping,
-      total,
-      status: "Processing",
-      createdAt: new Date().toISOString(),
-    });
+    try {
+      const { orderNumber } = await submitOrder({
+        data: {
+          name: String(data.get("name") ?? "").trim(),
+          email,
+          phone: String(data.get("phone") ?? "").trim(),
+          address: String(data.get("address") ?? "").trim(),
+          payment: payment as "card" | "snapscan" | "eft",
+          items: items.map((i) => ({
+            name: i.product.name,
+            quantity: i.quantity,
+            price: i.product.price,
+          })),
+        },
+      });
 
-    clear();
-    void navigate({ to: "/order-confirmed" });
+      saveOrderRef({ orderNumber, email });
+      clear();
+      void navigate({ to: "/order-confirmed" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not place your order.");
+    } finally {
+      setBusy(false);
+    }
   };
+
 
   if (items.length === 0) {
     return (
@@ -87,7 +97,10 @@ function Checkout() {
     <div className="mx-auto max-w-6xl px-5 py-16">
       <h1 className="font-display text-4xl font-bold uppercase">Checkout</h1>
 
-      <form onSubmit={handleSubmit} className="mt-10 grid gap-12 lg:grid-cols-[1fr_340px]">
+      <form
+        onSubmit={(event) => void handleSubmit(event)}
+        className="mt-10 grid gap-12 lg:grid-cols-[1fr_340px]"
+      >
         <div className="space-y-10">
           <fieldset className="space-y-4">
             <legend className="font-display text-sm font-bold uppercase tracking-[0.16em]">
@@ -185,9 +198,10 @@ function Checkout() {
           </dl>
           <button
             type="submit"
-            className="mt-6 w-full bg-primary py-3 text-xs uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-85"
+            disabled={busy}
+            className="mt-6 w-full bg-primary py-3 text-xs uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-85 disabled:opacity-50"
           >
-            Submit order
+            {busy ? "Placing order…" : "Submit order"}
           </button>
         </aside>
       </form>

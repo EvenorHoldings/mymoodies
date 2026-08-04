@@ -1,5 +1,8 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useNavigate } from "@tanstack/react-router";
+import { useQueryClient } from "@tanstack/react-query";
 import { useCart } from "@/lib/cart";
+import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -10,6 +13,16 @@ const navLinks = [
 
 export function SiteHeader() {
   const { count } = useCart();
+  const { user } = useAuth();
+  const navigate = useNavigate();
+  const queryClient = useQueryClient();
+
+  const handleSignOut = async () => {
+    await queryClient.cancelQueries();
+    queryClient.clear();
+    await supabase.auth.signOut();
+    void navigate({ to: "/auth", replace: true });
+  };
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
@@ -32,16 +45,44 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <Link
-          to="/cart"
-          className="border border-border px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors hover:bg-secondary"
-        >
-          Cart ({count})
-        </Link>
+        <div className="flex items-center gap-3">
+          {user ? (
+            <>
+              <Link
+                to="/orders"
+                className="text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Orders
+              </Link>
+              <button
+                type="button"
+                onClick={() => void handleSignOut()}
+                className="text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+              >
+                Sign out
+              </button>
+            </>
+          ) : (
+            <Link
+              to="/auth"
+              className="text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Sign in
+            </Link>
+          )}
+
+          <Link
+            to="/cart"
+            className="border border-border px-4 py-2 text-xs uppercase tracking-[0.16em] transition-colors hover:bg-secondary"
+          >
+            Cart ({count})
+          </Link>
+        </div>
       </div>
     </header>
   );
 }
+
 
 export function SiteFooter() {
   return (
