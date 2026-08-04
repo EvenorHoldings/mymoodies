@@ -97,7 +97,10 @@ function Checkout() {
     <div className="mx-auto max-w-6xl px-5 py-16">
       <h1 className="font-display text-4xl font-bold uppercase">Checkout</h1>
 
-      <form onSubmit={handleSubmit} className="mt-10 grid gap-12 lg:grid-cols-[1fr_340px]">
+      <form
+        onSubmit={(event) => void handleSubmit(event)}
+        className="mt-10 grid gap-12 lg:grid-cols-[1fr_340px]"
+      >
         <div className="space-y-10">
           <fieldset className="space-y-4">
             <legend className="font-display text-sm font-bold uppercase tracking-[0.16em]">
