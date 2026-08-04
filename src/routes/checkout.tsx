@@ -198,9 +198,10 @@ function Checkout() {
           </dl>
           <button
             type="submit"
-            className="mt-6 w-full bg-primary py-3 text-xs uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-85"
+            disabled={busy}
+            className="mt-6 w-full bg-primary py-3 text-xs uppercase tracking-[0.2em] text-primary-foreground transition-opacity hover:opacity-85 disabled:opacity-50"
           >
-            Submit order
+            {busy ? "Placing order…" : "Submit order"}
           </button>
         </aside>
       </form>
