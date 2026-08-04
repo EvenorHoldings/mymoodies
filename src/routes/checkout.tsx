@@ -1,8 +1,10 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { formatZar } from "@/data/products";
 import { useCart } from "@/lib/cart";
-import { saveOrder, makeOrderNumber } from "@/lib/orders";
+import { saveOrderRef } from "@/lib/orders";
+import { placeOrder } from "@/lib/orders.functions";
 
 export const Route = createFileRoute("/checkout")({
   head: () => ({
