@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useServerFn } from "@tanstack/react-start";
 import { formatZar } from "@/data/products";
-import { loadOrder, type Order } from "@/lib/orders";
+import { loadOrderRef } from "@/lib/orders";
+import { getOrderByNumber, type OrderRecord } from "@/lib/orders.functions";
 
 export const Route = createFileRoute("/order-confirmed")({
   head: () => ({
@@ -22,13 +24,21 @@ export const Route = createFileRoute("/order-confirmed")({
 const steps = ["Processing", "Shipped", "Delivered"];
 
 function OrderConfirmed() {
-  const [order, setOrder] = useState<Order | null>(null);
+  const fetchOrder = useServerFn(getOrderByNumber);
+  const [order, setOrder] = useState<OrderRecord | null>(null);
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    setOrder(loadOrder());
-    setReady(true);
-  }, []);
+    const ref = loadOrderRef();
+    if (!ref) {
+      setReady(true);
+      return;
+    }
+    fetchOrder({ data: ref })
+      .then((result) => setOrder(result))
+      .catch(() => setOrder(null))
+      .finally(() => setReady(true));
+  }, [fetchOrder]);
 
   if (!ready) return <div className="mx-auto max-w-3xl px-5 py-24" />;
 
@@ -45,6 +55,7 @@ function OrderConfirmed() {
       </div>
     );
   }
+
 
   return (
     <div className="mx-auto max-w-3xl px-5 py-16">
