@@ -31,44 +31,52 @@ const payments = [
 function Checkout() {
   const { items, subtotal, shipping, total, clear } = useCart();
   const navigate = useNavigate();
+  const submitOrder = useServerFn(placeOrder);
   const [payment, setPayment] = useState("card");
   const [error, setError] = useState<string | null>(null);
+  const [busy, setBusy] = useState(false);
 
   const field =
     "w-full border border-border bg-card px-3 py-2 text-sm outline-none focus:border-primary";
   const label = "text-[11px] uppercase tracking-[0.16em] text-muted-foreground";
 
-  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (items.length === 0) {
       setError("Your cart is empty.");
       return;
     }
     const data = new FormData(event.currentTarget);
-    const orderNumber = makeOrderNumber();
+    const email = String(data.get("email") ?? "").trim();
+    setError(null);
+    setBusy(true);
 
-    saveOrder({
-      orderNumber,
-      name: String(data.get("name") ?? ""),
-      email: String(data.get("email") ?? ""),
-      phone: String(data.get("phone") ?? ""),
-      address: String(data.get("address") ?? ""),
-      payment,
-      items: items.map((i) => ({
-        name: i.product.name,
-        quantity: i.quantity,
-        price: i.product.price,
-      })),
-      subtotal,
-      shipping,
-      total,
-      status: "Processing",
-      createdAt: new Date().toISOString(),
-    });
+    try {
+      const { orderNumber } = await submitOrder({
+        data: {
+          name: String(data.get("name") ?? "").trim(),
+          email,
+          phone: String(data.get("phone") ?? "").trim(),
+          address: String(data.get("address") ?? "").trim(),
+          payment: payment as "card" | "snapscan" | "eft",
+          items: items.map((i) => ({
+            name: i.product.name,
+            quantity: i.quantity,
+            price: i.product.price,
+          })),
+        },
+      });
 
-    clear();
-    void navigate({ to: "/order-confirmed" });
+      saveOrderRef({ orderNumber, email });
+      clear();
+      void navigate({ to: "/order-confirmed" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Could not place your order.");
+    } finally {
+      setBusy(false);
+    }
   };
+
 
   if (items.length === 0) {
     return (
