@@ -1,39 +1,19 @@
-export type Order = {
-  orderNumber: string;
-  name: string;
-  email: string;
-  phone: string;
-  address: string;
-  payment: string;
-  items: { name: string; quantity: number; price: number }[];
-  subtotal: number;
-  shipping: number;
-  total: number;
-  status: string;
-  createdAt: string;
-};
+const KEY = "moodies_last_order_ref";
 
-const KEY = "moodies_last_order";
+export type OrderRef = { orderNumber: string; email: string };
 
-export function makeOrderNumber() {
-  const now = new Date();
-  const stamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(now.getDate()).padStart(2, "0")}`;
-  const seq = String(Math.floor(Math.random() * 9999) + 1).padStart(4, "0");
-  return `MOO-${stamp}-${seq}`;
-}
-
-export function saveOrder(order: Order) {
+export function saveOrderRef(ref: OrderRef) {
   try {
-    window.localStorage.setItem(KEY, JSON.stringify(order));
+    window.localStorage.setItem(KEY, JSON.stringify(ref));
   } catch {
     /* ignore */
   }
 }
 
-export function loadOrder(): Order | null {
+export function loadOrderRef(): OrderRef | null {
   try {
     const raw = window.localStorage.getItem(KEY);
-    return raw ? (JSON.parse(raw) as Order) : null;
+    return raw ? (JSON.parse(raw) as OrderRef) : null;
   } catch {
     return null;
   }
