@@ -87,7 +87,7 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border">
-      <div className="mx-auto flex max-w-6xl flex-col gap-6 px-5 py-12 sm:flex-row sm:items-start sm:justify-between">
+      <div className="mx-auto flex max-w-6xl flex-col gap-8 px-5 py-12 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <p className="font-display text-sm font-bold uppercase tracking-[0.3em]">Moodies</p>
           <p className="mt-2 max-w-xs text-sm text-muted-foreground">
@@ -121,9 +121,21 @@ export function SiteFooter() {
             </a>
           </div>
         </div>
+
+        <div className="max-w-xs text-sm">
+          <p className="font-display text-xs font-bold uppercase tracking-[0.16em] text-foreground">
+            Evenor Holdings (Pty) Ltd
+          </p>
+          <p className="mt-1 text-xs italic text-muted-foreground">Always Better.</p>
+          <p className="mt-2 text-xs text-muted-foreground">
+            Reg. No. K2025/717968
+            <br />
+            CIPC South Africa · B-BBEE Level 2
+          </p>
+        </div>
       </div>
       <div className="border-t border-border py-5 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Moodies. 18+ only. Enjoy responsibly.
+        © {new Date().getFullYear()} Evenor Holdings (Pty) Ltd. All rights reserved.
       </div>
     </footer>
   );
