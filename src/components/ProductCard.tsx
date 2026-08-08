@@ -3,7 +3,7 @@ import { formatZar, subcategoryLabels, type Product } from "@/data/products";
 import { useCart } from "@/lib/cart";
 import { moodBorder } from "@/lib/mood";
 
-export function ProductCard({ product }: { product: Product }) {
+export function ProductCard({ product, compact = false }: { product: Product; compact?: boolean }) {
   const { add } = useCart();
   const [added, setAdded] = useState(false);
 
@@ -35,11 +35,15 @@ export function ProductCard({ product }: { product: Product }) {
         <h3 className="font-display text-base font-bold uppercase tracking-tight">
           {product.name}
         </h3>
-        <p className="text-sm leading-relaxed text-muted-foreground">{product.description}</p>
-        <p className="text-xs text-muted-foreground">
-          {product.spec}
-          {product.servings && product.servings !== "N/A" ? ` · ${product.servings}` : ""}
+        <p className={`text-sm leading-relaxed text-muted-foreground ${compact ? "line-clamp-2" : ""}`}>
+          {product.description}
         </p>
+        {!compact && (
+          <p className="text-xs text-muted-foreground">
+            {product.spec}
+            {product.servings && product.servings !== "N/A" ? ` · ${product.servings}` : ""}
+          </p>
+        )}
 
         <div className="mt-auto flex items-center justify-between gap-3 pt-4">
           <span className="font-display text-lg font-bold">{formatZar(product.price)}</span>
