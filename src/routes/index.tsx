@@ -57,7 +57,7 @@ function Index() {
 
   return (
     <>
-      <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center border-b border-border">
+      <section className="flex min-h-[calc(100vh-4rem)] snap-start items-center justify-center border-b border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center px-5 py-24 text-center sm:py-32">
           <p className="text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
             Premium wellness edibles & devices
@@ -77,7 +77,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20">
+      <section className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl snap-start flex-col justify-center px-5 py-12">
         <div className="grid gap-6 md:grid-cols-3">
           {collections.map((c) => {
             const count = products.filter((p) => p.mood === c.mood).length;
@@ -100,7 +100,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="border-y border-border bg-secondary">
+      <section className="flex min-h-[calc(100vh-4rem)] snap-start flex-col justify-center border-y border-border bg-secondary">
         <div className="mx-auto grid max-w-6xl gap-8 px-5 py-16 sm:grid-cols-2 lg:grid-cols-4">
           {principles.map((p) => (
             <div key={p.title}>
@@ -113,7 +113,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-6xl px-5 py-20">
+      <section className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl snap-start flex-col justify-center px-5 py-12">
         <div className="flex items-end justify-between gap-4">
           <h2 className="font-display text-2xl font-bold uppercase">Featured</h2>
           <Link
@@ -123,9 +123,11 @@ function Index() {
             View all {products.length} →
           </Link>
         </div>
-        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-8 flex gap-6 overflow-x-auto pb-4">
           {featured.map((p) => (
-            <ProductCard key={p.id} product={p} />
+            <div key={p.id} className="w-[240px] shrink-0">
+              <ProductCard product={p} />
+            </div>
           ))}
         </div>
       </section>
