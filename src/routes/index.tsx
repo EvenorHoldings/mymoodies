@@ -113,7 +113,7 @@ function Index() {
         </div>
       </section>
 
-      <section className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-6xl snap-start flex-col justify-center px-5 py-12">
+      <section className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-6xl snap-start flex-col justify-center px-5 py-8 sm:py-12">
         <div className="flex items-end justify-between gap-4">
           <h2 className="font-display text-2xl font-bold uppercase">Featured</h2>
           <Link
@@ -123,9 +123,9 @@ function Index() {
             View all {products.length} →
           </Link>
         </div>
-        <div className="mt-8 flex gap-6 overflow-x-auto pb-4">
+        <div className="mt-6 flex gap-4 overflow-x-auto pb-4 sm:mt-8 sm:gap-6">
           {featured.map((p) => (
-            <div key={p.id} className="w-[200px] shrink-0 sm:w-[240px]">
+            <div key={p.id} className="w-[160px] shrink-0 sm:w-[220px]">
               <ProductCard product={p} compact />
             </div>
           ))}
