@@ -2,8 +2,17 @@ import { useState } from "react";
 import { formatZar, subcategoryLabels, type Product } from "@/data/products";
 import { useCart } from "@/lib/cart";
 import { moodBorder } from "@/lib/mood";
+import { cn } from "@/lib/utils";
 
-export function ProductCard({ product, compact = false }: { product: Product; compact?: boolean }) {
+export function ProductCard({
+  product,
+  compact = false,
+  className,
+}: {
+  product: Product;
+  compact?: boolean;
+  className?: string;
+}) {
   const { add } = useCart();
   const [added, setAdded] = useState(false);
 
@@ -15,7 +24,11 @@ export function ProductCard({ product, compact = false }: { product: Product; co
 
   return (
     <article
-      className={`group flex flex-col border-l-2 bg-card transition-shadow hover:shadow-[0_12px_40px_-24px_oklch(0.19_0_0/0.5)] ${moodBorder(product.mood)}`}
+      className={cn(
+        "group flex flex-col border-l-2 bg-card transition-shadow hover:shadow-[0_12px_40px_-24px_oklch(0.19_0_0/0.5)]",
+        moodBorder(product.mood),
+        className
+      )}
     >
       <div className="aspect-square overflow-hidden bg-secondary">
         <img
@@ -28,29 +41,68 @@ export function ProductCard({ product, compact = false }: { product: Product; co
         />
       </div>
 
-      <div className="flex flex-1 flex-col gap-3 p-5">
-        <p className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
+      <div
+        className={cn(
+          "flex flex-1 flex-col",
+          compact ? "gap-2 p-3 sm:gap-3 sm:p-5" : "gap-3 p-5"
+        )}
+      >
+        <p
+          className={cn(
+            "uppercase tracking-[0.18em] text-muted-foreground",
+            compact ? "text-[10px] sm:text-[11px]" : "text-[11px]"
+          )}
+        >
           {subcategoryLabels[product.subcategory] ?? product.category}
         </p>
-        <h3 className="font-display text-base font-bold uppercase tracking-tight">
+        <h3
+          className={cn(
+            "font-display font-bold uppercase tracking-tight",
+            compact ? "text-sm sm:text-base" : "text-base"
+          )}
+        >
           {product.name}
         </h3>
-        <p className={`text-sm leading-relaxed text-muted-foreground ${compact ? "line-clamp-2" : ""}`}>
+        <p
+          className={cn(
+            "leading-relaxed text-muted-foreground",
+            compact ? "line-clamp-2 text-xs sm:text-sm" : "text-sm"
+          )}
+        >
           {product.description}
         </p>
         {!compact && (
           <p className="text-xs text-muted-foreground">
             {product.spec}
-            {product.servings && product.servings !== "N/A" ? ` · ${product.servings}` : ""}
+            {product.servings && product.servings !== "N/A"
+              ? ` · ${product.servings}`
+              : ""}
           </p>
         )}
 
-        <div className="mt-auto flex items-center justify-between gap-3 pt-4">
-          <span className="font-display text-lg font-bold">{formatZar(product.price)}</span>
+        <div
+          className={cn(
+            "mt-auto flex items-center justify-between gap-3",
+            compact ? "pt-2 sm:pt-4" : "pt-4"
+          )}
+        >
+          <span
+            className={cn(
+              "font-display font-bold",
+              compact ? "text-base sm:text-lg" : "text-lg"
+            )}
+          >
+            {formatZar(product.price)}
+          </span>
           <button
             type="button"
             onClick={handleAdd}
-            className="bg-primary px-4 py-2 text-xs font-medium uppercase tracking-[0.14em] text-primary-foreground transition-opacity hover:opacity-85"
+            className={cn(
+              "bg-primary font-medium uppercase tracking-[0.14em] text-primary-foreground transition-opacity hover:opacity-85",
+              compact
+                ? "px-3 py-1.5 text-[10px] sm:px-4 sm:py-2 sm:text-xs"
+                : "px-4 py-2 text-xs"
+            )}
           >
             {added ? "Added" : "Add to cart"}
           </button>
