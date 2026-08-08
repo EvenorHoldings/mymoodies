@@ -57,7 +57,7 @@ function Index() {
 
   return (
     <>
-      <section className="border-b border-border">
+      <section className="flex min-h-[calc(100vh-4rem)] items-center justify-center border-b border-border">
         <div className="mx-auto flex max-w-6xl flex-col items-center px-5 py-24 text-center sm:py-32">
           <p className="text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
             Premium wellness edibles & devices
