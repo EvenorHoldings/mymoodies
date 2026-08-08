@@ -78,7 +78,7 @@ function Index() {
       </section>
 
       <section className="mx-auto flex min-h-[calc(100vh-4rem)] max-w-6xl snap-start flex-col justify-center px-5 py-12">
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible">
           {collections.map((c) => {
             const count = products.filter((p) => p.mood === c.mood).length;
             return (
@@ -86,7 +86,7 @@ function Index() {
                 key={c.mood}
                 to="/shop"
                 search={{ mood: c.mood }}
-                className={`flex flex-col border border-border border-l-2 bg-card p-8 transition-colors hover:bg-secondary ${c.border}`}
+                className={`flex w-[240px] shrink-0 flex-col border border-border border-l-2 bg-card p-8 transition-colors hover:bg-secondary md:w-auto ${c.border}`}
               >
                 <span className={`h-1 w-10 ${c.accent}`} />
                 <h2 className="mt-6 font-display text-2xl font-bold uppercase">{c.title}</h2>
@@ -125,8 +125,8 @@ function Index() {
         </div>
         <div className="mt-8 flex gap-6 overflow-x-auto pb-4">
           {featured.map((p) => (
-            <div key={p.id} className="w-[240px] shrink-0">
-              <ProductCard product={p} />
+            <div key={p.id} className="w-[200px] shrink-0 sm:w-[240px]">
+              <ProductCard product={p} compact />
             </div>
           ))}
         </div>
