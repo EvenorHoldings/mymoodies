@@ -21,7 +21,7 @@ export function SiteHeader() {
     await queryClient.cancelQueries();
     queryClient.clear();
     await supabase.auth.signOut();
-    void navigate({ to: "/auth", replace: true });
+    void navigate({ to: "/auth", search: { redirect: undefined }, replace: true });
   };
 
   return (
@@ -65,6 +65,7 @@ export function SiteHeader() {
           ) : (
             <Link
               to="/auth"
+              search={{ redirect: undefined }}
               className="text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
             >
               Sign in
