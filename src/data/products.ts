@@ -1,6 +1,12 @@
 import cartUplift from "@/assets/cart-uplift.jpg";
 import cartCalm from "@/assets/cart-calm.jpg";
 import cartBalance from "@/assets/cart-balance.jpg";
+import cartUpliftMate from "@/assets/cart-uplift-mate.jpg";
+import cartCalmMate from "@/assets/cart-calm-mate.jpg";
+import cartBalanceMate from "@/assets/cart-balance-mate.jpg";
+import cartUpliftStandard from "@/assets/cart-uplift-standard.jpg";
+import cartCalmStandard from "@/assets/cart-calm-standard.jpg";
+import cartBalanceStandard from "@/assets/cart-balance-standard.jpg";
 import p107Black from "@/assets/p107-black.jpg";
 import p107White from "@/assets/p107-white.jpg";
 import p112Gold from "@/assets/p112-gold.jpg";
@@ -8,6 +14,12 @@ import p112Steel from "@/assets/p112-steel.jpg";
 import gummies from "@/assets/gummies.jpg";
 import cookie from "@/assets/cookie.jpg";
 import brownie from "@/assets/brownie.jpg";
+import gummiesCalm from "@/assets/gummies-calm.jpg";
+import gummiesBalance from "@/assets/gummies-balance.jpg";
+import cookieCalm from "@/assets/cookie-calm.jpg";
+import cookieBalance from "@/assets/cookie-balance.jpg";
+import brownieCalm from "@/assets/brownie-calm.jpg";
+import brownieBalance from "@/assets/brownie-balance.jpg";
 
 export type Mood = "uplift" | "calm" | "balance" | "neutral";
 export type Category = "cartridge" | "battery" | "edible";
@@ -92,7 +104,7 @@ export const products: Product[] = [
     mood: "uplift",
     price: 1000,
     sku: "UPLIFT-MATE-GUSH",
-    image: cartUplift,
+    image: cartUpliftMate,
     description: "Mate line, c10g format. Sweet mango notes with energizing clarity.",
     spec: "Mate \u00b7 1 \u00b7 c10g",
     servings: "Multiple",
@@ -105,7 +117,7 @@ export const products: Product[] = [
     mood: "calm",
     price: 1000,
     sku: "CALM-MATE-PINE",
-    image: cartCalm,
+    image: cartCalmMate,
     description: "Mate line, c10g. Tropical pineapple for relaxed focus and calm presence.",
     spec: "Mate \u00b7 1 \u00b7 c10g",
     servings: "Multiple",
@@ -118,7 +130,7 @@ export const products: Product[] = [
     mood: "balance",
     price: 1000,
     sku: "BALANCE-MATE-ZKIT",
-    image: cartBalance,
+    image: cartBalanceMate,
     description: "Mate line, c10g. Rainbow candy notes for subtle, balanced wellness.",
     spec: "Mate \u00b7 1 \u00b7 c10g",
     servings: "Multiple",
@@ -131,7 +143,7 @@ export const products: Product[] = [
     mood: "uplift",
     price: 700,
     sku: "UPLIFT-STD-MANGO",
-    image: cartUplift,
+    image: cartUpliftStandard,
     description: "Standard c10 cartridge. Smooth mango flavor for everyday uplift.",
     spec: "Standard \u00b7 1 \u00b7 c10",
     servings: "Multiple",
@@ -144,7 +156,7 @@ export const products: Product[] = [
     mood: "calm",
     price: 700,
     sku: "CALM-STD-LAV",
-    image: cartCalm,
+    image: cartCalmStandard,
     description: "Standard c10 cartridge. Calming lavender notes for relaxation.",
     spec: "Standard \u00b7 1 \u00b7 c10",
     servings: "Multiple",
@@ -157,7 +169,7 @@ export const products: Product[] = [
     mood: "balance",
     price: 700,
     sku: "BALANCE-STD-TROP",
-    image: cartBalance,
+    image: cartBalanceStandard,
     description: "Standard c10 cartridge. Tropical blend for balanced wellness.",
     spec: "Standard \u00b7 1 \u00b7 c10",
     servings: "Multiple",
@@ -235,7 +247,7 @@ export const products: Product[] = [
     mood: "calm",
     price: 350,
     sku: "EDIBLE-GUM-BLUE",
-    image: gummies,
+    image: gummiesCalm,
     description: "Relaxing blueberry notes for evening ritual. Resealable kraft pouch.",
     spec: "5 \u00b7 10 \u00b7 50 \u00b7 Matte kraft pouch, resealable \u00b7 Matte",
     servings: "5 servings, 10mg per serving",
@@ -248,7 +260,7 @@ export const products: Product[] = [
     mood: "balance",
     price: 350,
     sku: "EDIBLE-GUM-TROP",
-    image: gummies,
+    image: gummiesBalance,
     description: "Balanced tropical fruit blend. Resealable kraft pouch.",
     spec: "5 \u00b7 10 \u00b7 50 \u00b7 Matte kraft pouch, resealable \u00b7 Matte",
     servings: "5 servings, 10mg per serving",
@@ -274,7 +286,7 @@ export const products: Product[] = [
     mood: "calm",
     price: 280,
     sku: "EDIBLE-COOK-LAV",
-    image: cookie,
+    image: cookieCalm,
     description: "Buttery shortbread infused with culinary lavender. Embossed kraft box.",
     spec: "1 \u00b7 20 \u00b7 20 \u00b7 Kraft box, embossed logo \u00b7 Handcrafted",
     servings: "1 serving, 20mg",
@@ -287,7 +299,7 @@ export const products: Product[] = [
     mood: "balance",
     price: 280,
     sku: "EDIBLE-COOK-CHOCO",
-    image: cookie,
+    image: cookieBalance,
     description: "Dark chocolate meets smooth espresso notes. Embossed kraft box.",
     spec: "1 \u00b7 20 \u00b7 20 \u00b7 Kraft box, embossed logo \u00b7 Handcrafted",
     servings: "1 serving, 20mg",
@@ -313,7 +325,7 @@ export const products: Product[] = [
     mood: "calm",
     price: 220,
     sku: "EDIBLE-BROW-DARK",
-    image: brownie,
+    image: brownieCalm,
     description: "Premium dark chocolate brownie. Cardboard sleeve, minimal branding.",
     spec: "1 \u00b7 25 \u00b7 25 \u00b7 Cardboard sleeve \u00b7 Artisanal",
     servings: "1 serving, 25mg",
@@ -326,7 +338,7 @@ export const products: Product[] = [
     mood: "balance",
     price: 220,
     sku: "EDIBLE-BROW-SALT",
-    image: brownie,
+    image: brownieBalance,
     description: "Rich brownie with sea salt crunch. Cardboard sleeve.",
     spec: "1 \u00b7 25 \u00b7 25 \u00b7 Cardboard sleeve \u00b7 Artisanal",
     servings: "1 serving, 25mg",

@@ -30,16 +30,17 @@ export function ProductCard({
         className
       )}
     >
-      <div className="aspect-square overflow-hidden bg-secondary">
+      <div className="aspect-square overflow-hidden bg-card p-4 sm:p-6">
         <img
           src={product.image}
-          alt={product.name}
+          alt={`${product.name} — ${subcategoryLabels[product.subcategory] ?? product.category} on a plain white background`}
           loading="lazy"
           width={1024}
           height={1024}
-          className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+          className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
         />
       </div>
+
 
       <div
         className={cn(
