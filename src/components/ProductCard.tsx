@@ -1,8 +1,10 @@
 import { useState } from "react";
+import { Link } from "@tanstack/react-router";
 import { formatZar, subcategoryLabels, type Product } from "@/data/products";
 import { useCart } from "@/lib/cart";
 import { moodBorder } from "@/lib/mood";
 import { cn } from "@/lib/utils";
+
 
 export function ProductCard({
   product,
