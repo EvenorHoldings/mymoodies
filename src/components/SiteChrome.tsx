@@ -65,6 +65,15 @@ export function SiteHeader() {
               >
                 Orders
               </Link>
+              {isAdmin ? (
+                <Link
+                  to="/admin"
+                  className="text-xs uppercase tracking-[0.16em] text-muted-foreground transition-colors hover:text-foreground"
+                >
+                  Admin
+                </Link>
+              ) : null}
+
               <button
                 type="button"
                 onClick={() => void handleSignOut()}
