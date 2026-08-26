@@ -19,6 +19,7 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as OrderConfirmedRouteImport } from './routes/order-confirmed'
 import { Route as ShopRouteImport } from './routes/shop'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
 import { Route as AuthenticatedOrdersRouteImport } from './routes/_authenticated/orders'
 import { Route as ProductProductIdRouteImport } from './routes/product.$productId'
@@ -72,6 +73,11 @@ const ShopRoute = ShopRouteImport.update({
   path: '/shop',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AuthenticatedAdminRoute = AuthenticatedAdminRouteImport.update({
   id: '/admin',
   path: '/admin',
@@ -98,6 +104,7 @@ export interface FileRoutesByFullPath {
   '/legal': typeof LegalRoute
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/orders': typeof AuthenticatedOrdersRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -112,6 +119,7 @@ export interface FileRoutesByTo {
   '/legal': typeof LegalRoute
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRoute
   '/orders': typeof AuthenticatedOrdersRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -128,6 +136,7 @@ export interface FileRoutesById {
   '/legal': typeof LegalRoute
   '/order-confirmed': typeof OrderConfirmedRoute
   '/shop': typeof ShopRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
   '/_authenticated/orders': typeof AuthenticatedOrdersRoute
   '/product/$productId': typeof ProductProductIdRoute
@@ -144,6 +153,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/order-confirmed'
     | '/shop'
+    | '/sitemap.xml'
     | '/admin'
     | '/orders'
     | '/product/$productId'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/order-confirmed'
     | '/shop'
+    | '/sitemap.xml'
     | '/admin'
     | '/orders'
     | '/product/$productId'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/legal'
     | '/order-confirmed'
     | '/shop'
+    | '/sitemap.xml'
     | '/_authenticated/admin'
     | '/_authenticated/orders'
     | '/product/$productId'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   LegalRoute: typeof LegalRoute
   OrderConfirmedRoute: typeof OrderConfirmedRoute
   ShopRoute: typeof ShopRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProductProductIdRoute: typeof ProductProductIdRoute
 }
 
@@ -264,6 +277,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ShopRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_authenticated/admin': {
       id: '/_authenticated/admin'
       path: '/admin'
@@ -312,6 +332,7 @@ const rootRouteChildren: RootRouteChildren = {
   LegalRoute: LegalRoute,
   OrderConfirmedRoute: OrderConfirmedRoute,
   ShopRoute: ShopRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProductProductIdRoute: ProductProductIdRoute,
 }
 export const routeTree = rootRouteImport
