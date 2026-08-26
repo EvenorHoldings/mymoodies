@@ -1,7 +1,9 @@
 import { Link, useNavigate } from "@tanstack/react-router";
-import { useQueryClient } from "@tanstack/react-query";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useServerFn } from "@tanstack/react-start";
 import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/useAuth";
+import { amIAdmin } from "@/lib/admin.functions";
 import { supabase } from "@/integrations/supabase/client";
 
 const navLinks = [
@@ -16,6 +18,14 @@ export function SiteHeader() {
   const { user } = useAuth();
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const checkAdmin = useServerFn(amIAdmin);
+
+  const { data: isAdmin } = useQuery({
+    queryKey: ["am-i-admin"],
+    queryFn: () => checkAdmin(),
+    enabled: !!user,
+    staleTime: 5 * 60 * 1000,
+  });
 
   const handleSignOut = async () => {
     await queryClient.cancelQueries();
@@ -23,6 +33,7 @@ export function SiteHeader() {
     await supabase.auth.signOut();
     void navigate({ to: "/auth", search: { redirect: undefined }, replace: true });
   };
+
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
