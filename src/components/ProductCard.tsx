@@ -32,7 +32,11 @@ export function ProductCard({
         className
       )}
     >
-      <div className="aspect-square overflow-hidden bg-card p-4 sm:p-6">
+      <Link
+        to="/product/$productId"
+        params={{ productId: product.id }}
+        className="block aspect-square overflow-hidden bg-card p-4 sm:p-6"
+      >
         <img
           src={product.image}
           alt={`${product.name} — ${subcategoryLabels[product.subcategory] ?? product.category} on a plain white background`}
@@ -41,7 +45,7 @@ export function ProductCard({
           height={1024}
           className="h-full w-full object-contain transition-transform duration-500 group-hover:scale-[1.03]"
         />
-      </div>
+      </Link>
 
 
       <div
@@ -64,7 +68,13 @@ export function ProductCard({
             compact ? "text-sm sm:text-base" : "text-base"
           )}
         >
-          {product.name}
+          <Link
+            to="/product/$productId"
+            params={{ productId: product.id }}
+            className="hover:underline"
+          >
+            {product.name}
+          </Link>
         </h3>
         <p
           className={cn(
