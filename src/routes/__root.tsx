@@ -13,6 +13,7 @@ import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { CartProvider } from "../lib/cart";
 import { SiteHeader, SiteFooter } from "../components/SiteChrome";
+import { AgeGate } from "../components/AgeGate";
 
 
 function NotFoundComponent() {
@@ -133,6 +134,7 @@ function RootComponent() {
           </main>
           <SiteFooter />
         </div>
+        <AgeGate />
       </CartProvider>
     </QueryClientProvider>
   );
