@@ -13,6 +13,16 @@ export function AgeGate() {
     }
   }, []);
 
+  useEffect(() => {
+    if (status === "visible" || status === "blocked") {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+      };
+    }
+  }, [status]);
+
   if (status === "pending" || status === "hidden") return null;
 
   const confirm = () => {
@@ -38,9 +48,26 @@ export function AgeGate() {
         </h2>
 
         {status === "blocked" ? (
-          <p className="mt-4 text-sm text-muted-foreground">
-            You must be 18 or older to browse this store.
-          </p>
+          <>
+            <p className="mt-4 text-sm text-muted-foreground">
+              You must be 18 or older to browse this store. You're being redirected away.
+            </p>
+            <div className="mt-8 flex flex-col gap-3">
+              <a
+                href="https://www.google.com"
+                className="bg-primary px-6 py-3 text-xs font-medium uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-85"
+              >
+                Leave site now
+              </a>
+              <button
+                type="button"
+                onClick={() => setStatus("visible")}
+                className="border border-border px-6 py-3 text-xs uppercase tracking-[0.18em] text-muted-foreground hover:text-foreground"
+              >
+                Back
+              </button>
+            </div>
+          </>
         ) : (
           <>
             <p className="mt-4 text-sm text-muted-foreground">
