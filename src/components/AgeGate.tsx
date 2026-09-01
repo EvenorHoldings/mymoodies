@@ -14,13 +14,12 @@ export function AgeGate() {
   }, []);
 
   useEffect(() => {
-    if (status === "visible" || status === "blocked") {
-      const prev = document.body.style.overflow;
-      document.body.style.overflow = "hidden";
-      return () => {
-        document.body.style.overflow = prev;
-      };
-    }
+    if (status !== "visible" && status !== "blocked") return undefined;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
   }, [status]);
 
   if (status === "pending" || status === "hidden") return null;
