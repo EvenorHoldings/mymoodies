@@ -215,6 +215,8 @@ function Index() {
         </div>
       </section>
 
+      <HowItWorksSection />
+
       <section className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-6xl snap-start flex-col justify-center px-5 py-12">
         <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible">
           {collections.map((c) => {
