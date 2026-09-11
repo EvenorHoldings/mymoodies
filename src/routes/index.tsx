@@ -2,6 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { useInView } from "@/hooks/useInView";
+import {
+  Gem,
+  FlaskConical,
+  Lock,
+  Package,
+  Truck,
+  MapPin,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
