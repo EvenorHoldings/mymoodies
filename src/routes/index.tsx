@@ -369,6 +369,8 @@ function Index() {
           ))}
         </div>
       </section>
+
+      <TrustSection />
     </>
   );
 }
