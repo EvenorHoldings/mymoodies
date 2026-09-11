@@ -2,6 +2,14 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { useInView } from "@/hooks/useInView";
+import {
+  Gem,
+  FlaskConical,
+  Lock,
+  Package,
+  Truck,
+  MapPin,
+} from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -190,6 +198,96 @@ function HowItWorksSection() {
   );
 }
 
+const trustCards = [
+  {
+    title: "Premium Ingredients",
+    copy: "Responsibly sourced, high-grade inputs with no unnecessary fillers.",
+    Icon: Gem,
+  },
+  {
+    title: "Independently Tested",
+    copy: "Third-party verified for purity, potency and consistent quality.",
+    Icon: FlaskConical,
+  },
+  {
+    title: "Secure Checkout",
+    copy: "Encrypted payment handling and your details are never shared.",
+    Icon: Lock,
+  },
+  {
+    title: "Discreet Packaging",
+    copy: "Plain, unbranded parcels shipped with care and complete privacy.",
+    Icon: Package,
+  },
+  {
+    title: "Fast Delivery",
+    copy: "Dispatch within 1–2 business days to major South African centres.",
+    Icon: Truck,
+  },
+  {
+    title: "South African Brand",
+    copy: "Designed, owned and operated locally with clear supply-chain values.",
+    Icon: MapPin,
+  },
+];
+
+function TrustSection() {
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.2 });
+
+  return (
+    <section
+      ref={ref}
+      id="trust"
+      className="relative flex min-h-[calc(100dvh-4rem)] snap-start items-center justify-center overflow-hidden"
+    >
+      <div className="mx-auto max-w-6xl px-5 py-24 text-center sm:py-32">
+        <p className="text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
+          Our promise
+        </p>
+        <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tight sm:text-4xl">
+          Why Customers Trust Moodies
+        </h2>
+
+        <div className="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          {trustCards.map((card, index) => {
+            const delay = inView ? `${300 + index * 100}ms` : "0ms";
+            return (
+              <div
+                key={card.title}
+                className={`group rounded-2xl bg-surface-cream p-8 text-left shadow-sm transition-all duration-700 ease-out hover:-translate-y-1 hover:bg-background/80 hover:shadow-md ${
+                  inView
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-6 opacity-0"
+                }`}
+                style={{ transitionDelay: delay }}
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-full border border-border bg-background text-foreground transition-colors duration-300 group-hover:border-foreground/20">
+                  <card.Icon className="h-5 w-5" strokeWidth={1.5} />
+                </div>
+                <h3 className="mt-6 font-display text-sm font-bold uppercase tracking-[0.12em]">
+                  {card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
+                  {card.copy}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+
+        <p
+          className={`mx-auto mt-16 max-w-2xl text-sm leading-relaxed text-muted-foreground transition-all duration-1000 ease-out ${
+            inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+          }`}
+          style={{ transitionDelay: inView ? "900ms" : "0ms" }}
+        >
+          Designed with quality, transparency and responsible enjoyment in mind.
+        </p>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   const featured = products.slice(0, 6);
 
@@ -271,6 +369,8 @@ function Index() {
           ))}
         </div>
       </section>
+
+      <TrustSection />
     </>
   );
 }
