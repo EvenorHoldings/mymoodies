@@ -288,6 +288,274 @@ function TrustSection() {
   );
 }
 
+function VisaLogo({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 100 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Visa"
+    >
+      <text
+        x="50"
+        y="23"
+        textAnchor="middle"
+        fontFamily="sans-serif"
+        fontSize="20"
+        fontWeight="bold"
+        fill="#1A1F71"
+      >
+        VISA
+      </text>
+      <path d="M28 26h44" stroke="#F7B600" strokeWidth="2" />
+    </svg>
+  );
+}
+
+function MastercardLogo({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 60 40"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Mastercard"
+    >
+      <circle cx="18" cy="20" r="12" fill="#EB001B" />
+      <circle cx="34" cy="20" r="12" fill="#F79E1B" opacity="0.9" />
+    </svg>
+  );
+}
+
+function PayFastLogo({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 120 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="PayFast"
+    >
+      <path
+        d="M8 16L14 22L25 10"
+        stroke="#00A650"
+        strokeWidth="3"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+      <text
+        x="34"
+        y="22"
+        fontFamily="sans-serif"
+        fontSize="15"
+        fontWeight="bold"
+        fill="#00A650"
+      >
+        PayFast
+      </text>
+    </svg>
+  );
+}
+
+function YocoLogo({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 90 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Yoco"
+    >
+      <circle cx="10" cy="16" r="6" fill="#00C2A0" />
+      <text
+        x="24"
+        y="22"
+        fontFamily="sans-serif"
+        fontSize="15"
+        fontWeight="bold"
+        fill="#00C2A0"
+      >
+        Yoco
+      </text>
+    </svg>
+  );
+}
+
+function OzowLogo({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 90 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Ozow"
+    >
+      <path
+        d="M16 6c-5.5 0-10 4.5-10 10s4.5 10 10 10 10-4.5 10-10S21.5 6 16 6z"
+        stroke="#F26522"
+        strokeWidth="2.5"
+      />
+      <text
+        x="32"
+        y="22"
+        fontFamily="sans-serif"
+        fontSize="15"
+        fontWeight="bold"
+        fill="#F26522"
+      >
+        Ozow
+      </text>
+    </svg>
+  );
+}
+
+function ApplePayLogo({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 110 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Apple Pay"
+    >
+      <path
+        d="M17.8 12.1c-.1-2.3-1.9-4.1-4.1-4.1s-4 1.8-4.1 4.1c0 .1 0 .2 0 .3-2.6.3-4.6 2.5-4.6 5.2 0 2.3 1.5 4.2 3.6 4.9-.1.9-.4 2.3-.4 3.6 0 2.6 2.1 4.7 4.7 4.7 1.4 0 2.7-.6 3.5-1.6.8 1 2.1 1.6 3.5 1.6 2.6 0 4.7-2.1 4.7-4.7 0-1.3-.3-2.7-.4-3.6 2.1-.7 3.6-2.6 3.6-4.9 0-2.7-2-4.9-4.6-5.2 0-.1 0-.2 0-.3zm-2.3-3.3c.5-.9.8-2 .7-3.1-.9.1-2 .7-2.7 1.5-.5.6-1 1.6-.8 2.6 1 .1 2-.5 2.8-1z"
+        fill="currentColor"
+      />
+      <text
+        x="40"
+        y="22"
+        fontFamily="sans-serif"
+        fontSize="15"
+        fontWeight="bold"
+        fill="currentColor"
+      >
+        Pay
+      </text>
+    </svg>
+  );
+}
+
+function GooglePayLogo({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 130 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="Google Pay"
+    >
+      <circle cx="14" cy="16" r="10" stroke="#4285F4" strokeWidth="2.5" />
+      <path
+        d="M14 10v12M9 16h10"
+        stroke="#EA4335"
+        strokeWidth="2.5"
+        strokeLinecap="round"
+      />
+      <text
+        x="32"
+        y="22"
+        fontFamily="sans-serif"
+        fontSize="15"
+        fontWeight="bold"
+        fill="#4285F4"
+      >
+        Pay
+      </text>
+    </svg>
+  );
+}
+
+function SSLSecureLogo({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 130 32"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      className={className}
+      aria-label="SSL Secure"
+    >
+      <path
+        d="M16 4l12 4v8c0 7-5 12-12 16C9 28 4 23 4 16v-8l12-4z"
+        stroke="currentColor"
+        strokeWidth="2"
+      />
+      <path
+        d="M16 14v6M12 14h8"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+      />
+      <text
+        x="34"
+        y="22"
+        fontFamily="sans-serif"
+        fontSize="13"
+        fontWeight="bold"
+        fill="currentColor"
+      >
+        SSL Secure
+      </text>
+    </svg>
+  );
+}
+
+const partners = [
+  { name: "Visa", Logo: VisaLogo },
+  { name: "Mastercard", Logo: MastercardLogo },
+  { name: "PayFast", Logo: PayFastLogo },
+  { name: "Yoco", Logo: YocoLogo },
+  { name: "Ozow", Logo: OzowLogo },
+  { name: "Apple Pay", Logo: ApplePayLogo },
+  { name: "Google Pay", Logo: GooglePayLogo },
+  { name: "SSL Secure", Logo: SSLSecureLogo },
+];
+
+function PaymentPartnersSection() {
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.2 });
+
+  return (
+    <section
+      ref={ref}
+      id="payment-partners"
+      className="relative flex min-h-[calc(100dvh-4rem)] snap-start items-center justify-center overflow-hidden"
+    >
+      <div className="mx-auto max-w-5xl px-5 py-24 text-center sm:py-32">
+        <p className="text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
+          Secure & local
+        </p>
+        <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tight sm:text-4xl">
+          Trusted Technologies & Payment Partners
+        </h2>
+        <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+          Flexible, encrypted payment options for South Africa and beyond.
+        </p>
+
+        <div className="mt-16 flex flex-wrap items-center justify-center gap-x-10 gap-y-10 sm:gap-x-14">
+          {partners.map(({ name, Logo }, index) => {
+            const delay = inView ? `${300 + index * 80}ms` : "0ms";
+            return (
+              <div
+                key={name}
+                className={`group flex flex-col items-center gap-3 transition-all duration-700 ease-out ${
+                  inView
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-6 opacity-0"
+                }`}
+                style={{ transitionDelay: delay }}
+              >
+                <Logo className="h-7 w-auto max-w-[120px] grayscale opacity-60 transition-all duration-300 group-hover:grayscale-0 group-hover:opacity-100 sm:h-8" />
+                <span className="sr-only">{name}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   const featured = products.slice(0, 6);
 
