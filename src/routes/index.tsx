@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { useInView } from "@/hooks/useInView";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -52,6 +53,143 @@ const principles = [
   { title: "Restraint", copy: "Matte finishes, quiet colour, no noise." },
 ];
 
+type IconProps = { className?: string };
+
+function MoodWheelIcon({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      className={className}
+      aria-hidden="true"
+    >
+      <circle cx="24" cy="24" r="18" />
+      <path d="M24 6v36M6 24h36" opacity="0.5" />
+      <circle cx="24" cy="24" r="4" fill="currentColor" stroke="none" />
+    </svg>
+  );
+}
+
+function MagicSparkleIcon({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      className={className}
+      aria-hidden="true"
+    >
+      <path
+        d="M24 4l2.6 10.4L36 16l-9.4 2.6L24 28l-2.6-9.4L12 16l10.4-2.6L24 4z"
+        fill="currentColor"
+        fillOpacity="0.12"
+      />
+      <circle cx="10" cy="10" r="1.5" fill="currentColor" />
+      <circle cx="38" cy="38" r="1.5" fill="currentColor" />
+      <circle cx="38" cy="10" r="1" fill="currentColor" />
+      <circle cx="10" cy="38" r="1" fill="currentColor" />
+    </svg>
+  );
+}
+
+function LeafShieldIcon({ className }: IconProps) {
+  return (
+    <svg
+      viewBox="0 0 48 48"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      className={className}
+      aria-hidden="true"
+    >
+      <path d="M24 4c9 3 16 11 16 23 0 12-16 21-16 21S8 39 8 27C8 15 15 7 24 4z" />
+      <path
+        d="M24 14c-5 5-5 17 0 22 5-5 5-17 0-22z"
+        fill="currentColor"
+        fillOpacity="0.12"
+      />
+    </svg>
+  );
+}
+
+const howItWorksSteps = [
+  {
+    title: "Choose Your Mood",
+    copy: "Select how you'd like to feel today, whether that's focused, relaxed, uplifted, creative or ready to unwind.",
+    Icon: MoodWheelIcon,
+  },
+  {
+    title: "Discover Your Match",
+    copy: "Browse carefully curated premium products designed around your selected mood and lifestyle.",
+    Icon: MagicSparkleIcon,
+  },
+  {
+    title: "Enjoy Responsibly",
+    copy: "Enjoy responsibly while following local regulations and recommended guidance.",
+    Icon: LeafShieldIcon,
+  },
+];
+
+function HowItWorksSection() {
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.2 });
+
+  return (
+    <section
+      ref={ref}
+      id="how-it-works"
+      className="relative flex min-h-[calc(100dvh-4rem)] snap-start items-center justify-center overflow-hidden"
+    >
+      <div className="mx-auto max-w-6xl px-5 py-24 text-center sm:py-32">
+        <p className="text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
+          The experience
+        </p>
+        <h2 className="mt-4 font-display text-3xl font-bold uppercase tracking-tight sm:text-4xl">
+          How Moodies Works
+        </h2>
+        <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-muted-foreground">
+          Finding your mood should be simple.
+        </p>
+
+        <div className="relative mt-16 grid gap-6 md:mt-20 md:grid-cols-3 md:gap-8">
+          <div
+            className={`pointer-events-none absolute top-20 left-[8%] right-[8%] hidden h-px bg-gradient-to-r from-transparent via-border to-transparent md:block transition-transform duration-1000 ease-out origin-left ${
+              inView ? "scale-x-100" : "scale-x-0"
+            }`}
+            aria-hidden="true"
+          />
+          {howItWorksSteps.map((step, index) => {
+            const delay = inView ? `${300 + index * 150}ms` : "0ms";
+            return (
+              <div
+                key={step.title}
+                className={`relative z-10 flex flex-col items-center rounded-2xl bg-surface-cream p-8 shadow-sm transition-all duration-700 ease-out hover:-translate-y-1.5 hover:shadow-md md:p-10 ${
+                  inView
+                    ? "translate-y-0 opacity-100"
+                    : "translate-y-6 opacity-0"
+                }`}
+                style={{ transitionDelay: delay }}
+              >
+                <div className="mb-8 flex h-16 w-16 items-center justify-center rounded-full bg-background text-foreground shadow-sm">
+                  <step.Icon className="h-7 w-7" />
+                </div>
+                <h3 className="font-display text-lg font-bold uppercase tracking-[0.12em]">
+                  {step.title}
+                </h3>
+                <p className="mt-3 max-w-[16rem] text-sm leading-relaxed text-muted-foreground">
+                  {step.copy}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   const featured = products.slice(0, 6);
 
@@ -76,6 +214,8 @@ function Index() {
           </Link>
         </div>
       </section>
+
+      <HowItWorksSection />
 
       <section className="mx-auto flex min-h-[calc(100dvh-4rem)] max-w-6xl snap-start flex-col justify-center px-5 py-12">
         <div className="flex gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-3 md:overflow-visible">
