@@ -1,8 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useState } from "react";
 import { products } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
+import { Button } from "@/components/ui/button";
 import { useInView } from "@/hooks/useInView";
 import {
+  ChevronDown,
   Gem,
   FlaskConical,
   Lock,
@@ -25,6 +28,8 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "Premium wellness edibles & devices. Emotional clarity. Collectible packaging.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Index,
@@ -556,6 +561,184 @@ function PaymentPartnersSection() {
   );
 }
 
+const faqs = [
+  {
+    question: "What makes Moodies different?",
+    answer:
+      "Moodies organises a carefully selected range around how you want to feel, with clear product information, restrained design and discreet service.",
+  },
+  {
+    question: "How do I choose my mood?",
+    answer:
+      "Start with your intention. Choose Uplift for brighter energy, Calm for slower moments, or Balance for an even, grounded experience.",
+  },
+  {
+    question: "Where do you ship?",
+    answer:
+      "We deliver nationwide across South Africa for a flat R100 fee, with dispatch normally taking place within two working days.",
+  },
+  {
+    question: "Are your products quality tested?",
+    answer:
+      "Our products are independently tested for purity, potency and consistency before they are made available through Moodies.",
+  },
+  {
+    question: "How should products be stored?",
+    answer:
+      "Keep products sealed in their original packaging, in a cool, dry place away from direct sunlight and safely out of reach of children and pets.",
+  },
+  {
+    question: "Can I contact customer support?",
+    answer:
+      "Yes. Email hello@moodies.site for help with products, orders or delivery, and our team will assist you.",
+  },
+] as const;
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((faq) => ({
+    "@type": "Question",
+    name: faq.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: faq.answer,
+    },
+  })),
+};
+
+function FaqSection() {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.12 });
+
+  return (
+    <section
+      ref={ref}
+      id="faq"
+      className="flex min-h-[calc(100dvh-4rem)] snap-start items-center border-t border-border"
+    >
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      <div className="mx-auto w-full max-w-5xl px-5 py-24 sm:py-32">
+        <div
+          className={`text-center transition-all duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none ${
+            inView ? "translate-y-0 opacity-100" : "translate-y-5 opacity-0"
+          }`}
+        >
+          <p className="text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
+            Considered answers
+          </p>
+          <h2 className="mt-4 font-display text-3xl font-bold uppercase sm:text-4xl">
+            Frequently Asked Questions
+          </h2>
+        </div>
+
+        <div className="mx-auto mt-14 max-w-3xl border-t border-border sm:mt-16">
+          {faqs.map((faq, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div
+                key={faq.question}
+                className={`border-b border-border transition-all duration-700 ease-out motion-reduce:transform-none motion-reduce:transition-none ${
+                  inView ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
+                }`}
+                style={{ transitionDelay: inView ? `${100 + index * 70}ms` : "0ms" }}
+              >
+                <Button
+                  type="button"
+                  variant="ghost"
+                  aria-expanded={isOpen}
+                  aria-controls={`faq-answer-${index}`}
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="h-auto w-full justify-between rounded-none px-0 py-6 text-left font-display text-base font-medium hover:bg-transparent sm:py-7 sm:text-lg"
+                >
+                  <span className="whitespace-normal pr-6">{faq.question}</span>
+                  <ChevronDown
+                    className={`size-5 shrink-0 text-muted-foreground transition-transform duration-300 ${
+                      isOpen ? "rotate-180" : "rotate-0"
+                    }`}
+                    aria-hidden="true"
+                  />
+                </Button>
+                <div
+                  id={`faq-answer-${index}`}
+                  role="region"
+                  aria-hidden={!isOpen}
+                  className={`grid transition-[grid-template-rows,opacity] duration-500 ease-out motion-reduce:transition-none ${
+                    isOpen ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                  }`}
+                >
+                  <div className="overflow-hidden">
+                    <p className="max-w-2xl pb-7 text-sm leading-7 text-muted-foreground">
+                      {faq.answer}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function FinalCtaSection() {
+  const { ref, inView } = useInView<HTMLElement>({ threshold: 0.2 });
+
+  return (
+    <section
+      ref={ref}
+      className="relative flex min-h-[calc(100dvh-4rem)] snap-start items-center overflow-hidden bg-surface-cream"
+      aria-labelledby="final-cta-heading"
+    >
+      <div className="pointer-events-none absolute inset-0" aria-hidden="true">
+        <div className="animate-float-slow absolute -left-24 top-[12%] h-72 w-72 rounded-full border border-foreground/10" />
+        <div className="animate-float-slower absolute -right-20 bottom-[10%] h-56 w-56 rotate-12 rounded-[38%] border border-foreground/10" />
+        <svg
+          viewBox="0 0 640 220"
+          fill="none"
+          className="animate-drift-slow absolute left-1/2 top-1/2 w-[44rem] max-w-[110vw] -translate-x-1/2 -translate-y-1/2 text-foreground/10"
+        >
+          <path d="M20 160C128 24 236 218 338 92C421 -10 516 38 620 148" stroke="currentColor" />
+          <path d="M42 190C164 72 242 232 360 124C456 36 534 70 604 176" stroke="currentColor" />
+        </svg>
+      </div>
+
+      <div
+        className={`relative z-10 mx-auto w-full max-w-4xl px-5 py-28 text-center transition-all duration-1000 ease-out motion-reduce:transform-none motion-reduce:transition-none sm:py-36 ${
+          inView ? "translate-y-0 opacity-100" : "translate-y-6 opacity-0"
+        }`}
+      >
+        <p className="text-[11px] uppercase tracking-[0.32em] text-muted-foreground">
+          Begin with intention
+        </p>
+        <h2
+          id="final-cta-heading"
+          className="mx-auto mt-5 max-w-3xl font-display text-4xl font-bold uppercase sm:text-6xl"
+        >
+          Ready to Find Your Mood?
+        </h2>
+        <p className="mx-auto mt-6 max-w-lg text-sm leading-7 text-muted-foreground sm:text-base">
+          Discover premium products crafted around how you want to feel.
+        </p>
+        <div className="mt-10 flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
+          <Button asChild size="lg" className="h-12 rounded-none px-8 text-xs uppercase tracking-[0.18em]">
+            <Link to="/shop">Shop Collection</Link>
+          </Button>
+          <Button
+            asChild
+            size="lg"
+            variant="outline"
+            className="h-12 rounded-none border-foreground/25 bg-transparent px-8 text-xs uppercase tracking-[0.18em] hover:bg-background/60"
+          >
+            <a href="#how-it-works">Take Mood Quiz</a>
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Index() {
   const featured = products.slice(0, 6);
 
@@ -639,6 +822,9 @@ function Index() {
       </section>
 
       <TrustSection />
+      <PaymentPartnersSection />
+      <FaqSection />
+      <FinalCtaSection />
     </>
   );
 }
