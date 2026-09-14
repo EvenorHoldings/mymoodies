@@ -42,7 +42,7 @@ function CartPage() {
               <li key={product.id} className="flex gap-5 py-6">
                 <img
                   src={product.image}
-                  alt={product.name}
+                  alt={product.imageAlt}
                   loading="lazy"
                   width={1024}
                   height={1024}

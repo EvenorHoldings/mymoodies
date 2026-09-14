@@ -1,25 +1,8 @@
-import cartUplift from "@/assets/cart-uplift.jpg";
-import cartCalm from "@/assets/cart-calm.jpg";
-import cartBalance from "@/assets/cart-balance.jpg";
-import cartUpliftMate from "@/assets/cart-uplift-mate.jpg";
-import cartCalmMate from "@/assets/cart-calm-mate.jpg";
-import cartBalanceMate from "@/assets/cart-balance-mate.jpg";
-import cartUpliftStandard from "@/assets/cart-uplift-standard.jpg";
-import cartCalmStandard from "@/assets/cart-calm-standard.jpg";
-import cartBalanceStandard from "@/assets/cart-balance-standard.jpg";
-import p107Black from "@/assets/p107-black.jpg";
-import p107White from "@/assets/p107-white.jpg";
-import p112Gold from "@/assets/p112-gold.jpg";
-import p112Steel from "@/assets/p112-steel.jpg";
-import gummies from "@/assets/gummies.jpg";
-import cookie from "@/assets/cookie.jpg";
-import brownie from "@/assets/brownie.jpg";
-import gummiesCalm from "@/assets/gummies-calm.jpg";
-import gummiesBalance from "@/assets/gummies-balance.jpg";
-import cookieCalm from "@/assets/cookie-calm.jpg";
-import cookieBalance from "@/assets/cookie-balance.jpg";
-import brownieCalm from "@/assets/brownie-calm.jpg";
-import brownieBalance from "@/assets/brownie-balance.jpg";
+import editorialUplift from "@/assets/editorial-uplift.jpg.asset.json";
+import editorialCalm from "@/assets/editorial-calm.jpg.asset.json";
+import editorialBalance from "@/assets/editorial-balance.jpg.asset.json";
+import editorialHardware from "@/assets/editorial-hardware.jpg.asset.json";
+import editorialEdibles from "@/assets/editorial-edibles.jpg.asset.json";
 
 export type Mood = "uplift" | "calm" | "balance" | "neutral";
 export type Category = "cartridge" | "battery" | "edible";
@@ -33,6 +16,7 @@ export type Product = {
   price: number;
   sku: string;
   image: string;
+  imageAlt: string;
   description: string;
   spec: string;
   servings: string;
@@ -65,7 +49,8 @@ export const products: Product[] = [
     mood: "uplift",
     price: 1400,
     sku: "UPLIFT-LR-CITRUS",
-    image: cartUplift,
+    image: editorialUplift.url,
+    imageAlt: "South African creative entrepreneur with Uplift wellness products at a sunlit café",
     description: "Premium live resin cartridge. Bright citrus blend for morning clarity and creative energy.",
     spec: "Live Resin \u00b7 1",
     servings: "Multiple",
@@ -78,7 +63,8 @@ export const products: Product[] = [
     mood: "calm",
     price: 1400,
     sku: "CALM-LR-MINT",
-    image: cartCalm,
+    image: editorialCalm.url,
+    imageAlt: "South African professional relaxing with Calm wellness products in a Cape Town apartment",
     description: "Premium live resin. Cool mint with subtle floral notes for evening relaxation.",
     spec: "Live Resin \u00b7 1",
     servings: "Multiple",
@@ -91,7 +77,8 @@ export const products: Product[] = [
     mood: "balance",
     price: 1400,
     sku: "BALANCE-LR-BERRY",
-    image: cartBalance,
+    image: editorialBalance.url,
+    imageAlt: "Friends enjoying a golden-hour conversation with Balance wellness products",
     description: "Premium live resin. Mixed berry profile for balanced, centered wellness.",
     spec: "Live Resin \u00b7 1",
     servings: "Multiple",
@@ -104,7 +91,8 @@ export const products: Product[] = [
     mood: "uplift",
     price: 1000,
     sku: "UPLIFT-MATE-GUSH",
-    image: cartUpliftMate,
+    image: editorialUplift.url,
+    imageAlt: "South African creative entrepreneur with Uplift wellness products at a sunlit café",
     description: "Mate line, c10g format. Sweet mango notes with energizing clarity.",
     spec: "Mate \u00b7 1 \u00b7 c10g",
     servings: "Multiple",
@@ -117,7 +105,8 @@ export const products: Product[] = [
     mood: "calm",
     price: 1000,
     sku: "CALM-MATE-PINE",
-    image: cartCalmMate,
+    image: editorialCalm.url,
+    imageAlt: "South African professional relaxing with Calm wellness products in a Cape Town apartment",
     description: "Mate line, c10g. Tropical pineapple for relaxed focus and calm presence.",
     spec: "Mate \u00b7 1 \u00b7 c10g",
     servings: "Multiple",
@@ -130,7 +119,8 @@ export const products: Product[] = [
     mood: "balance",
     price: 1000,
     sku: "BALANCE-MATE-ZKIT",
-    image: cartBalanceMate,
+    image: editorialBalance.url,
+    imageAlt: "Friends enjoying a golden-hour conversation with Balance wellness products",
     description: "Mate line, c10g. Rainbow candy notes for subtle, balanced wellness.",
     spec: "Mate \u00b7 1 \u00b7 c10g",
     servings: "Multiple",
@@ -143,7 +133,8 @@ export const products: Product[] = [
     mood: "uplift",
     price: 700,
     sku: "UPLIFT-STD-MANGO",
-    image: cartUpliftStandard,
+    image: editorialUplift.url,
+    imageAlt: "South African creative entrepreneur with Uplift wellness products at a sunlit café",
     description: "Standard c10 cartridge. Smooth mango flavor for everyday uplift.",
     spec: "Standard \u00b7 1 \u00b7 c10",
     servings: "Multiple",
@@ -156,7 +147,8 @@ export const products: Product[] = [
     mood: "calm",
     price: 700,
     sku: "CALM-STD-LAV",
-    image: cartCalmStandard,
+    image: editorialCalm.url,
+    imageAlt: "South African professional relaxing with Calm wellness products in a Cape Town apartment",
     description: "Standard c10 cartridge. Calming lavender notes for relaxation.",
     spec: "Standard \u00b7 1 \u00b7 c10",
     servings: "Multiple",
@@ -169,7 +161,8 @@ export const products: Product[] = [
     mood: "balance",
     price: 700,
     sku: "BALANCE-STD-TROP",
-    image: cartBalanceStandard,
+    image: editorialBalance.url,
+    imageAlt: "Friends enjoying a golden-hour conversation with Balance wellness products",
     description: "Standard c10 cartridge. Tropical blend for balanced wellness.",
     spec: "Standard \u00b7 1 \u00b7 c10",
     servings: "Multiple",
@@ -182,7 +175,8 @@ export const products: Product[] = [
     mood: "neutral",
     price: 400,
     sku: "P107-BLACK",
-    image: p107Black,
+    image: editorialHardware.url,
+    imageAlt: "South African architect with a premium black Moodies device in a minimal studio",
     description: "Classic 510 thread push battery. Matte black finish, USB-C charging.",
     spec: "510 Thread \u00b7 P107 \u00b7 1000 \u00b7 USB-C \u00b7 None \u00b7 Midnight Black \u00b7 Matte",
     servings: "N/A",
@@ -195,7 +189,8 @@ export const products: Product[] = [
     mood: "neutral",
     price: 400,
     sku: "P107-WHITE",
-    image: p107White,
+    image: editorialHardware.url,
+    imageAlt: "South African architect with a premium Moodies device in a minimal studio",
     description: "Classic 510 thread push battery. Pearl white finish, USB-C charging.",
     spec: "510 Thread \u00b7 P107 \u00b7 1000 \u00b7 USB-C \u00b7 None \u00b7 Pearl White \u00b7 Matte",
     servings: "N/A",
@@ -208,7 +203,8 @@ export const products: Product[] = [
     mood: "neutral",
     price: 400,
     sku: "P112-GOLD",
-    image: p112Gold,
+    image: editorialHardware.url,
+    imageAlt: "South African architect with a premium smart device in a minimal studio",
     description: "Smart 510 battery with LED display. Rose gold finish, 1200mAh capacity.",
     spec: "510 Thread \u00b7 P112 \u00b7 1200 \u00b7 USB-C \u00b7 LED Smart Display \u00b7 Rose Gold \u00b7 Metallic",
     servings: "N/A",
@@ -221,7 +217,8 @@ export const products: Product[] = [
     mood: "neutral",
     price: 400,
     sku: "P112-STEEL",
-    image: p112Steel,
+    image: editorialHardware.url,
+    imageAlt: "South African architect with a premium steel device in a minimal studio",
     description: "Smart 510 battery with LED display. Gunmetal steel finish, 1200mAh capacity.",
     spec: "510 Thread \u00b7 P112 \u00b7 1200 \u00b7 USB-C \u00b7 LED Smart Display \u00b7 Gunmetal Steel \u00b7 Metallic",
     servings: "N/A",
@@ -234,7 +231,8 @@ export const products: Product[] = [
     mood: "uplift",
     price: 350,
     sku: "EDIBLE-GUM-CITRUS",
-    image: gummies,
+    image: editorialEdibles.url,
+    imageAlt: "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
     description: "Bright citrus blend for morning clarity. Resealable kraft pouch.",
     spec: "5 \u00b7 10 \u00b7 50 \u00b7 Matte kraft pouch, resealable \u00b7 Matte",
     servings: "5 servings, 10mg per serving",
@@ -247,7 +245,8 @@ export const products: Product[] = [
     mood: "calm",
     price: 350,
     sku: "EDIBLE-GUM-BLUE",
-    image: gummiesCalm,
+    image: editorialEdibles.url,
+    imageAlt: "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
     description: "Relaxing blueberry notes for evening ritual. Resealable kraft pouch.",
     spec: "5 \u00b7 10 \u00b7 50 \u00b7 Matte kraft pouch, resealable \u00b7 Matte",
     servings: "5 servings, 10mg per serving",
@@ -260,7 +259,8 @@ export const products: Product[] = [
     mood: "balance",
     price: 350,
     sku: "EDIBLE-GUM-TROP",
-    image: gummiesBalance,
+    image: editorialEdibles.url,
+    imageAlt: "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
     description: "Balanced tropical fruit blend. Resealable kraft pouch.",
     spec: "5 \u00b7 10 \u00b7 50 \u00b7 Matte kraft pouch, resealable \u00b7 Matte",
     servings: "5 servings, 10mg per serving",
@@ -273,7 +273,8 @@ export const products: Product[] = [
     mood: "uplift",
     price: 280,
     sku: "EDIBLE-COOK-HONEY",
-    image: cookie,
+    image: editorialEdibles.url,
+    imageAlt: "Friends enjoying a refined Moodies edible ritual in natural light",
     description: "Handcrafted honey-oat with warm spices. White kraft box, embossed.",
     spec: "1 \u00b7 20 \u00b7 20 \u00b7 White kraft box, embossed logo \u00b7 Handcrafted",
     servings: "1 serving, 20mg",
@@ -286,7 +287,8 @@ export const products: Product[] = [
     mood: "calm",
     price: 280,
     sku: "EDIBLE-COOK-LAV",
-    image: cookieCalm,
+    image: editorialEdibles.url,
+    imageAlt: "Friends enjoying a refined Moodies edible ritual in natural light",
     description: "Buttery shortbread infused with culinary lavender. Embossed kraft box.",
     spec: "1 \u00b7 20 \u00b7 20 \u00b7 Kraft box, embossed logo \u00b7 Handcrafted",
     servings: "1 serving, 20mg",
@@ -299,7 +301,8 @@ export const products: Product[] = [
     mood: "balance",
     price: 280,
     sku: "EDIBLE-COOK-CHOCO",
-    image: cookieBalance,
+    image: editorialEdibles.url,
+    imageAlt: "Friends enjoying a refined Moodies edible ritual in natural light",
     description: "Dark chocolate meets smooth espresso notes. Embossed kraft box.",
     spec: "1 \u00b7 20 \u00b7 20 \u00b7 Kraft box, embossed logo \u00b7 Handcrafted",
     servings: "1 serving, 20mg",
@@ -312,7 +315,8 @@ export const products: Product[] = [
     mood: "uplift",
     price: 220,
     sku: "EDIBLE-BROW-ALMOND",
-    image: brownie,
+    image: editorialEdibles.url,
+    imageAlt: "Artisanal Moodies brownie styled at a relaxed South African brunch",
     description: "Fudgy brownie with sliced almonds. Eco-friendly cardboard sleeve.",
     spec: "1 \u00b7 25 \u00b7 25 \u00b7 Cardboard sleeve, eco-friendly \u00b7 Artisanal",
     servings: "1 serving, 25mg",
@@ -325,7 +329,8 @@ export const products: Product[] = [
     mood: "calm",
     price: 220,
     sku: "EDIBLE-BROW-DARK",
-    image: brownieCalm,
+    image: editorialEdibles.url,
+    imageAlt: "Artisanal Moodies brownie styled at a relaxed South African brunch",
     description: "Premium dark chocolate brownie. Cardboard sleeve, minimal branding.",
     spec: "1 \u00b7 25 \u00b7 25 \u00b7 Cardboard sleeve \u00b7 Artisanal",
     servings: "1 serving, 25mg",
@@ -338,7 +343,8 @@ export const products: Product[] = [
     mood: "balance",
     price: 220,
     sku: "EDIBLE-BROW-SALT",
-    image: brownieBalance,
+    image: editorialEdibles.url,
+    imageAlt: "Artisanal Moodies brownie styled at a relaxed South African brunch",
     description: "Rich brownie with sea salt crunch. Cardboard sleeve.",
     spec: "1 \u00b7 25 \u00b7 25 \u00b7 Cardboard sleeve \u00b7 Artisanal",
     servings: "1 serving, 25mg",

@@ -86,13 +86,13 @@ function ProductDetail() {
       </nav>
 
       <div className="mt-8 grid gap-10 lg:grid-cols-2">
-        <div className={`border-l-2 bg-card p-6 ${moodBorder(product.mood)}`}>
+        <div className={`group overflow-hidden border-l-2 bg-card ${moodBorder(product.mood)}`}>
           <img
             src={product.image}
-            alt={`${product.name} — ${subcategoryLabels[product.subcategory] ?? product.category} on a plain white background`}
+            alt={product.imageAlt}
             width={1024}
             height={1024}
-            className="aspect-square w-full object-contain"
+            className="aspect-[4/5] w-full object-cover transition-transform duration-1000 ease-out motion-reduce:transition-none group-hover:scale-[1.025]"
           />
         </div>
 
