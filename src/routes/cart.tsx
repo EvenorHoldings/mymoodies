@@ -11,10 +11,12 @@ export const Route = createFileRoute("/cart")({
         name: "description",
         content: "Review your Moodies order. Flat R100 delivery, discreet packaging, ZAR pricing.",
       },
+      { name: "robots", content: "noindex, nofollow" },
       { property: "og:title", content: "Your Cart — Moodies" },
       { property: "og:description", content: "Review your Moodies order before checkout." },
     ],
   }),
+
   component: CartPage,
 });
 
@@ -73,11 +75,13 @@ function CartPage() {
                     </div>
                     <button
                       type="button"
+                      aria-label={`Remove ${product.name} from cart`}
                       onClick={() => remove(product.id)}
-                      className="text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground"
+                      className="min-h-11 text-xs uppercase tracking-[0.14em] text-muted-foreground hover:text-foreground"
                     >
                       Remove
                     </button>
+
                   </div>
                 </div>
                 <span className="font-display text-sm font-bold">
@@ -87,7 +91,7 @@ function CartPage() {
             ))}
           </ul>
 
-          <aside className="h-fit border border-border p-6">
+          <aside className="order-first h-fit rounded-lg border border-border p-6 lg:order-last">
             <h2 className="font-display text-sm font-bold uppercase tracking-[0.16em]">Summary</h2>
             <dl className="mt-6 space-y-3 text-sm">
               <div className="flex justify-between">

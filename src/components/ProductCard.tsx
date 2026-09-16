@@ -110,16 +110,21 @@ export function ProductCard({
           <button
             type="button"
             onClick={handleAdd}
+            aria-label={`Add ${product.name} to cart`}
             className={cn(
-              "bg-primary font-medium uppercase tracking-[0.14em] text-primary-foreground transition-opacity hover:opacity-85",
+              "min-h-11 rounded-md bg-primary font-medium uppercase tracking-[0.14em] text-primary-foreground transition-opacity hover:opacity-85",
               compact
-                ? "px-3 py-1.5 text-[10px] sm:px-4 sm:py-2 sm:text-xs"
+                ? "px-3 py-2 text-[10px] sm:px-4 sm:text-xs"
                 : "px-4 py-2 text-xs"
             )}
           >
             {added ? "Added" : "Add to cart"}
           </button>
         </div>
+        <p role="status" aria-live="polite" className="sr-only">
+          {added ? `${product.name} added to your cart` : ""}
+        </p>
+
       </div>
     </article>
   );
