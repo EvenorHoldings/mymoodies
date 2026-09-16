@@ -203,17 +203,17 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/shop" search={{ mood: "uplift" }} className={footerLinkClass}>
+              <Link to="/shop" search={{ mood: "uplift", category: undefined }} className={footerLinkClass}>
                 Uplift
               </Link>
             </li>
             <li>
-              <Link to="/shop" search={{ mood: "calm" }} className={footerLinkClass}>
+              <Link to="/shop" search={{ mood: "calm", category: undefined }} className={footerLinkClass}>
                 Calm
               </Link>
             </li>
             <li>
-              <Link to="/shop" search={{ mood: "balance" }} className={footerLinkClass}>
+              <Link to="/shop" search={{ mood: "balance", category: undefined }} className={footerLinkClass}>
                 Balance
               </Link>
             </li>
