@@ -9,7 +9,7 @@
 - [ ] Ensure every homepage section has one clear primary action and a concise five-second value story above the fold.
 - [ ] Verify the refreshed experience on desktop and mobile without changing commerce behaviour.
 - [ ] Complete the full launch-readiness UI/UX audit across every customer-facing page.
-- [ ] Repair editorial image delivery and standardise image presentation.
+- [x] Repair editorial image delivery and standardise image presentation.
 - [ ] Unify navigation, footer, typography, spacing, controls, motion, and accessibility.
 - [ ] Refine catalog, product, cart, checkout, account, and content-page experiences.
-- [ ] Complete per-route SEO metadata and responsive end-to-end verification.
+- [x] Complete per-route SEO metadata and responsive end-to-end verification.
