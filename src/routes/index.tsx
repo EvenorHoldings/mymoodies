@@ -118,20 +118,20 @@ function Reviews() {
 
 function MoodFinder() {
   return <section className="bg-secondary py-24 sm:py-32"><div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2">
-    <div className="overflow-hidden"><img src={balanceImage} alt="Friends sharing a balanced moment on a Johannesburg terrace" loading="lazy" width={1024} height={1024} className="aspect-[5/4] w-full object-cover transition-transform duration-1000 hover:scale-[1.025] motion-reduce:transition-none" /></div>
+    <div className="overflow-hidden"><img src={balanceImage.url} alt="Friends sharing a balanced moment on a Johannesburg terrace" loading="lazy" width={1024} height={1024} className="aspect-[5/4] w-full object-cover transition-transform duration-1000 hover:scale-[1.025] motion-reduce:transition-none" /></div>
     <div className="lg:px-12"><SectionHeading eyebrow="A more personal path" title="What’s your mood today?" copy="Answer one simple question, then explore products aligned to the moment you want to create." /><div className="mt-8 flex flex-wrap gap-3">{moods.map((m) => <Button key={m.mood} asChild variant="outline" className="rounded-none bg-transparent"><Link to="/shop" search={{ mood: m.mood }}>{m.title}</Link></Button>)}</div><p className="mt-5 text-xs text-muted-foreground">Choose a mood to see your curated collection.</p></div>
   </div></section>;
 }
 
 function InstagramGallery() {
-  const images = [{ src: upliftImage, alt: "Creative morning at a South African café" }, { src: ediblesImage, alt: "Friends sharing an artisanal Moodies moment" }, { src: calmImage, alt: "Quiet evening ritual in Cape Town" }, { src: hardwareImage, alt: "Creative studio with a premium Moodies device" }];
+  const images = [{ src: upliftImage.url, alt: "Creative morning at a South African café" }, { src: ediblesImage.url, alt: "Friends sharing an artisanal Moodies moment" }, { src: calmImage.url, alt: "Quiet evening ritual in Cape Town" }, { src: hardwareImage.url, alt: "Creative studio with a premium Moodies device" }];
   return <section className="py-24 sm:py-32"><div className="mx-auto max-w-7xl px-5"><div className="flex items-end justify-between gap-5"><SectionHeading eyebrow="From our community" title="Life, in every mood." /><a href="https://instagram.com/moodies" target="_blank" rel="noreferrer" className="text-xs font-semibold uppercase tracking-[0.16em]">Follow @moodies</a></div>
     <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4">{images.map((image) => <a key={image.alt} href="https://instagram.com/moodies" target="_blank" rel="noreferrer" className="group overflow-hidden"><img {...image} loading="lazy" width={1024} height={1024} className="aspect-square w-full object-cover transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-105" /></a>)}</div>
   </div></section>;
 }
 
 function Wholesale() {
-  return <section className="relative min-h-[70vh] overflow-hidden"><img src={wholesaleImage} alt="Independent South African concept store carrying premium wellness products" loading="lazy" width={1408} height={912} className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-primary/45" />
+  return <section className="relative min-h-[70vh] overflow-hidden"><img src={wholesaleImage.url} alt="Independent South African concept store carrying premium wellness products" loading="lazy" width={1408} height={912} className="absolute inset-0 h-full w-full object-cover" /><div className="absolute inset-0 bg-primary/45" />
     <div className="relative mx-auto flex min-h-[70vh] max-w-7xl items-end px-5 py-16 sm:items-center sm:py-24"><div className="max-w-xl bg-background p-8 sm:p-12"><SectionHeading eyebrow="For retailers" title="Bring Moodies to your customers." copy="Partner with a South African brand built for thoughtful retail, hospitality and considered gifting." /><Button asChild className="mt-8 rounded-none px-7"><Link to="/contact">Start a wholesale conversation</Link></Button></div></div>
   </section>;
 }
@@ -155,7 +155,7 @@ function Faq() {
 function Index() {
   return <>
     <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-primary text-primary-foreground">
-      <img src={heroImage} alt="South African couple relaxing with Moodies wellness products in a refined apartment" width={1200} height={1504} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[62%_center] opacity-80" />
+      <img src={heroImage.url} alt="South African couple relaxing with Moodies wellness products in a refined apartment" width={1200} height={1504} fetchPriority="high" className="absolute inset-0 h-full w-full object-cover object-[62%_center] opacity-80" />
       <div className="absolute inset-0 bg-primary/35" />
       <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-7xl items-end px-5 py-12 sm:items-center sm:py-20"><div className="max-w-xl bg-background/95 p-7 text-foreground backdrop-blur-sm sm:p-12">
         <p className="text-[10px] font-semibold uppercase tracking-[0.28em] text-accent">Premium adult wellness · South Africa</p>
