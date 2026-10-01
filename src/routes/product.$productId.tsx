@@ -34,6 +34,30 @@ export const Route = createFileRoute("/product/$productId")({
         { name: "description", content: product.description },
         { property: "og:title", content: title },
         { property: "og:description", content: product.description },
+        { property: "og:type", content: "product" },
+      ],
+      links: [
+        { rel: "canonical", href: `https://moodiessite.lovable.app/product/${product.id}` },
+      ],
+      scripts: [
+        {
+          type: "application/ld+json",
+          children: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: product.name,
+            description: product.description,
+            sku: product.id,
+            brand: { "@type": "Brand", name: "Moodies" },
+            offers: {
+              "@type": "Offer",
+              priceCurrency: "ZAR",
+              price: product.price,
+              availability: "https://schema.org/InStock",
+              url: `https://moodiessite.lovable.app/product/${product.id}`,
+            },
+          }),
+        },
       ],
     };
   },

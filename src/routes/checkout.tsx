@@ -17,6 +17,7 @@ export const Route = createFileRoute("/checkout")({
       },
       { property: "og:title", content: "Checkout — Moodies" },
       { property: "og:description", content: "Complete your Moodies order securely." },
+      { name: "robots", content: "noindex, nofollow" },
     ],
   }),
   component: Checkout,
@@ -170,7 +171,7 @@ function Checkout() {
           {error ? <p className="text-sm text-destructive">{error}</p> : null}
         </div>
 
-        <aside className="h-fit border border-border p-6">
+        <aside className="h-fit rounded-lg border border-border p-6 lg:sticky lg:top-24">
           <h2 className="font-display text-sm font-bold uppercase tracking-[0.16em]">Order</h2>
           <ul className="mt-5 space-y-3 text-sm">
             {items.map(({ product, quantity }) => (

@@ -15,6 +15,7 @@ import wholesaleImage from "@/assets/editorial-wholesale.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
+    links: [{ rel: "canonical", href: "https://moodiessite.lovable.app/" }],
     meta: [
       { title: "Moodies | Premium Mood-Led Wellness South Africa" },
       { name: "description", content: "Shop premium, independently tested edibles, cartridges and devices curated for Uplift, Calm and Balance. Discreet delivery across South Africa." },
