@@ -351,4 +351,5 @@ export const products: Product[] = [
   },
 ];
 
-export const formatZar = (value: number) => `R${value.toLocaleString("en-ZA")}`;
+export const formatZar = (value: number) =>
+  `R${Math.round(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`;
