@@ -15,7 +15,7 @@ import wholesaleImage from "@/assets/editorial-wholesale.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    links: [{ rel: "canonical", href: "https://moodiessite.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://moodies.life/" }],
     meta: [
       { title: "Moodies | Premium Mood-Led Wellness South Africa" },
       { name: "description", content: "Shop premium, independently tested edibles, cartridges and devices curated for Uplift, Calm and Balance. Discreet delivery across South Africa." },
@@ -40,7 +40,7 @@ const faqs = [
   { question: "Where do you ship?", answer: "We deliver nationwide across South Africa for a flat R100 fee, with dispatch normally taking place within two working days." },
   { question: "Are your products quality tested?", answer: "Our products are independently tested for purity, potency and consistency before they are made available through Moodies." },
   { question: "How should products be stored?", answer: "Keep products sealed in their original packaging, in a cool, dry place away from direct sunlight and safely out of reach of children and pets." },
-  { question: "Can I contact customer support?", answer: "Yes. Email hello@moodies.site for help with products, orders or delivery, and our team will assist you." },
+  { question: "Can I contact customer support?", answer: "Yes. Email hello@moodies.life for help with products, orders or delivery, and our team will assist you." },
 ] as const;
 
 const faqSchema = { "@context": "https://schema.org", "@type": "FAQPage", mainEntity: faqs.map(({ question, answer }) => ({ "@type": "Question", name: question, acceptedAnswer: { "@type": "Answer", text: answer } })) };
