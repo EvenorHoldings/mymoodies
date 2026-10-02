@@ -2,13 +2,13 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
-    links: [{ rel: "canonical", href: "https://moodiessite.lovable.app/contact" }],
+    links: [{ rel: "canonical", href: "https://moodies.life/contact" }],
     meta: [
       { title: "Contact Moodies — Orders & Support" },
       {
         name: "description",
         content:
-          "Reach the Moodies team about orders, delivery and stockist enquiries. Email hello@moodies.site.",
+          "Reach the Moodies team about orders, delivery and stockist enquiries. Email hello@moodies.life.",
       },
       { property: "og:title", content: "Contact Moodies" },
       { property: "og:description", content: "Orders, delivery and stockist enquiries." },
@@ -25,10 +25,10 @@ function Contact() {
         <div className="border border-border p-6">
           <h2 className="font-display text-sm font-bold uppercase tracking-[0.16em]">General</h2>
           <a
-            href="mailto:hello@moodies.site"
+            href="mailto:hello@moodies.life"
             className="mt-3 block text-sm text-muted-foreground hover:text-foreground"
           >
-            hello@moodies.site
+            hello@moodies.life
           </a>
         </div>
         <div className="border border-border p-6">

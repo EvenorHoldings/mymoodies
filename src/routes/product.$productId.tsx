@@ -37,7 +37,7 @@ export const Route = createFileRoute("/product/$productId")({
         { property: "og:type", content: "product" },
       ],
       links: [
-        { rel: "canonical", href: `https://moodiessite.lovable.app/product/${product.id}` },
+        { rel: "canonical", href: `https://moodies.life/product/${product.id}` },
       ],
       scripts: [
         {
@@ -54,7 +54,7 @@ export const Route = createFileRoute("/product/$productId")({
               priceCurrency: "ZAR",
               price: product.price,
               availability: "https://schema.org/InStock",
-              url: `https://moodiessite.lovable.app/product/${product.id}`,
+              url: `https://moodies.life/product/${product.id}`,
             },
           }),
         },

@@ -7,6 +7,7 @@ import {
   useState,
   type ReactNode,
 } from "react";
+import type * as React from "react";
 import { products, type Product } from "@/data/products";
 
 export type CartLine = { id: string; quantity: number };
@@ -27,7 +28,10 @@ type CartContextValue = {
   clear: () => void;
 };
 
-const CartContext = createContext<CartContextValue | null>(null);
+const globalKey = "__moodiesCartContext" as const;
+const g = globalThis as unknown as Record<string, React.Context<CartContextValue | null> | undefined>;
+const CartContext: React.Context<CartContextValue | null> =
+  g[globalKey] ?? (g[globalKey] = createContext<CartContextValue | null>(null));
 
 export function CartProvider({ children }: { children: ReactNode }) {
   const [lines, setLines] = useState<CartLine[]>([]);

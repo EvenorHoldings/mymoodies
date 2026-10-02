@@ -234,8 +234,8 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <a href="mailto:hello@moodies.site" className={footerLinkClass}>
-                hello@moodies.site
+              <a href="mailto:hello@moodies.life" className={footerLinkClass}>
+                hello@moodies.life
               </a>
             </li>
             <li>
