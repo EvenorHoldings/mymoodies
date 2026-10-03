@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, ChevronDown, FlaskConical, Leaf, LockKeyhole, MapPin, PackageCheck, Sparkles, Star, Truck } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
+import { MoodGuide } from "@/components/MoodGuide";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { useInView } from "@/hooks/useInView";
@@ -117,12 +118,6 @@ function Reviews() {
   </div></section>;
 }
 
-function MoodFinder() {
-  return <section className="bg-secondary py-24 sm:py-32"><div className="mx-auto grid max-w-7xl items-center gap-12 px-5 lg:grid-cols-2">
-    <div className="overflow-hidden"><img src={balanceImage.url} alt="Friends sharing a balanced moment on a Johannesburg terrace" loading="lazy" width={1024} height={1024} className="aspect-[5/4] w-full object-cover transition-transform duration-1000 hover:scale-[1.025] motion-reduce:transition-none" /></div>
-    <div className="lg:px-12"><SectionHeading eyebrow="A more personal path" title="What’s your mood today?" copy="Answer one simple question, then explore products aligned to the moment you want to create." /><div className="mt-8 flex flex-wrap gap-3">{moods.map((m) => <Button key={m.mood} asChild variant="outline" className="rounded-none bg-transparent"><Link to="/shop" search={{ mood: m.mood }}>{m.title}</Link></Button>)}</div><p className="mt-5 text-xs text-muted-foreground">Choose a mood to see your curated collection.</p></div>
-  </div></section>;
-}
 
 function InstagramGallery() {
   const images = [{ src: upliftImage.url, alt: "Creative morning at a South African café" }, { src: ediblesImage.url, alt: "Friends sharing an artisanal Moodies moment" }, { src: calmImage.url, alt: "Quiet evening ritual in Cape Town" }, { src: hardwareImage.url, alt: "Creative studio with a premium Moodies device" }];
@@ -172,7 +167,7 @@ function Index() {
     <BestSellers />
     <WhyMoodies />
     <Reviews />
-    <MoodFinder />
+    <MoodGuide />
     <InstagramGallery />
     <Wholesale />
     <Newsletter />
