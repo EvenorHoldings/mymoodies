@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState } from "react";
 import { ArrowRight, ChevronDown, FlaskConical, Leaf, LockKeyhole, MapPin, PackageCheck, Sparkles, Star, Truck } from "lucide-react";
 import { ProductCard } from "@/components/ProductCard";
+import { MoodGuide } from "@/components/MoodGuide";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { useInView } from "@/hooks/useInView";
@@ -172,7 +173,7 @@ function Index() {
     <BestSellers />
     <WhyMoodies />
     <Reviews />
-    <MoodFinder />
+    <MoodGuide />
     <InstagramGallery />
     <Wholesale />
     <Newsletter />
