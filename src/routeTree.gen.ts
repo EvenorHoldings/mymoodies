@@ -18,6 +18,7 @@ import { Route as CheckoutRouteImport } from './routes/checkout'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as LegalRouteImport } from './routes/legal'
 import { Route as OrderConfirmedRouteImport } from './routes/order-confirmed'
+import { Route as OurStoryRouteImport } from './routes/our-story'
 import { Route as ShopRouteImport } from './routes/shop'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AuthenticatedAdminRouteImport } from './routes/_authenticated/admin'
@@ -68,6 +69,11 @@ const OrderConfirmedRoute = OrderConfirmedRouteImport.update({
   path: '/order-confirmed',
   getParentRoute: () => rootRouteImport,
 } as any)
+const OurStoryRoute = OurStoryRouteImport.update({
+  id: '/our-story',
+  path: '/our-story',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ShopRoute = ShopRouteImport.update({
   id: '/shop',
   path: '/shop',
@@ -103,6 +109,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
   '/order-confirmed': typeof OrderConfirmedRoute
+  '/our-story': typeof OurStoryRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
   '/order-confirmed': typeof OrderConfirmedRoute
+  '/our-story': typeof OurStoryRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/admin': typeof AuthenticatedAdminRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/legal': typeof LegalRoute
   '/order-confirmed': typeof OrderConfirmedRoute
+  '/our-story': typeof OurStoryRoute
   '/shop': typeof ShopRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_authenticated/admin': typeof AuthenticatedAdminRoute
@@ -152,6 +161,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/legal'
     | '/order-confirmed'
+    | '/our-story'
     | '/shop'
     | '/sitemap.xml'
     | '/admin'
@@ -167,6 +177,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/legal'
     | '/order-confirmed'
+    | '/our-story'
     | '/shop'
     | '/sitemap.xml'
     | '/admin'
@@ -183,6 +194,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/legal'
     | '/order-confirmed'
+    | '/our-story'
     | '/shop'
     | '/sitemap.xml'
     | '/_authenticated/admin'
@@ -200,6 +212,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   LegalRoute: typeof LegalRoute
   OrderConfirmedRoute: typeof OrderConfirmedRoute
+  OurStoryRoute: typeof OurStoryRoute
   ShopRoute: typeof ShopRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   ProductProductIdRoute: typeof ProductProductIdRoute
@@ -270,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OrderConfirmedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/our-story': {
+      id: '/our-story'
+      path: '/our-story'
+      fullPath: '/our-story'
+      preLoaderRoute: typeof OurStoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/shop': {
       id: '/shop'
       path: '/shop'
@@ -331,6 +351,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   LegalRoute: LegalRoute,
   OrderConfirmedRoute: OrderConfirmedRoute,
+  OurStoryRoute: OurStoryRoute,
   ShopRoute: ShopRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   ProductProductIdRoute: ProductProductIdRoute,
