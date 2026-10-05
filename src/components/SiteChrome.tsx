@@ -7,6 +7,7 @@ import { useCart } from "@/lib/cart";
 import { useAuth } from "@/hooks/useAuth";
 import { amIAdmin } from "@/lib/admin.functions";
 import { supabase } from "@/integrations/supabase/client";
+import moodiesLogo from "@/assets/moodies-logo.png";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -49,11 +50,8 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
-        <Link
-          to="/"
-          className="font-display text-base font-bold uppercase tracking-[0.28em] sm:text-lg sm:tracking-[0.3em]"
-        >
-          Moodies
+        <Link to="/" aria-label="Moodies home" className="flex items-center">
+          <img src={moodiesLogo} alt="Moodies" width={1326} height={273} className="h-6 w-auto sm:h-7" />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
