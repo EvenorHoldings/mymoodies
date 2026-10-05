@@ -105,7 +105,7 @@ function BestSellers() {
 function WhyMoodies() {
   const values = [[Sparkles, "Premium ingredients", "Responsibly sourced inputs selected for a refined, consistent experience."], [FlaskConical, "Tested with intent", "Independent quality checks support purity, potency and transparency."], [PackageCheck, "Private by design", "Discreet parcels and clear information from checkout to delivery."], [Leaf, "Locally considered", "A South African brand building a more thoughtful adult wellness category."]] as const;
   return <section className="bg-primary py-24 text-primary-foreground sm:py-32"><div className="mx-auto grid max-w-7xl gap-16 px-5 lg:grid-cols-[0.8fr_1.2fr]">
-    <div><SectionHeading eyebrow="The Moodies standard" title="Why Moodies" copy="Quality, transparency and responsible enjoyment—without the noise." /><Button asChild variant="secondary" className="mt-8 rounded-none px-7"><Link to="/about">Read our story</Link></Button></div>
+    <div><SectionHeading eyebrow="The Moodies standard" title="Why Moodies" copy="Quality, transparency and responsible enjoyment—without the noise." /><Button asChild variant="secondary" className="mt-8 rounded-none px-7"><Link to="/our-story">Read our story</Link></Button></div>
     <div className="grid gap-px bg-primary-foreground/20 sm:grid-cols-2">{values.map(([Icon, title, copy]) => <div key={title} className="bg-primary p-8"><Icon className="size-6 text-accent" strokeWidth={1.4}/><h3 className="mt-8 font-display text-xl font-semibold">{title}</h3><p className="mt-3 text-sm leading-6 text-primary-foreground/70">{copy}</p></div>)}</div>
   </div></section>;
 }

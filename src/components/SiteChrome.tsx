@@ -261,6 +261,11 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
+              <Link to="/our-story" className={footerLinkClass}>
+                Our story
+              </Link>
+            </li>
+            <li>
               <Link to="/legal" className={footerLinkClass}>
                 Legal & privacy
               </Link>
