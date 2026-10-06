@@ -1,5 +1,10 @@
 # Roadmap
 
+- [ ] Restore the universal packaging wordmark and category-correct product images.
+- [ ] Verify all 22 product pages against their catalogue categories.
+- [ ] Add a downloadable Moodies brand guide and packaging/social logo files.
+- [ ] Confirm Moodies founding year (waiting for user; do not invent).
+
 - [x] Render the prepared payment-partner section on the homepage.
 - [x] Add the premium homepage call-to-action before the footer.
 - [x] Add a luxury single-open FAQ accordion with SEO schema markup.
