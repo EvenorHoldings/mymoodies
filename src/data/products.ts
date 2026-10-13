@@ -9,6 +9,7 @@ import {
   batteryP107White,
   batteryP112Gold,
   batteryP112Steel,
+  packagingImages,
 } from "@/assets/products";
 
 export type Mood = "uplift" | "calm" | "balance" | "neutral";
@@ -47,7 +48,7 @@ export const subcategoryLabels: Record<string, string> = {
   brownies: "Brownies",
 };
 
-export const products: Product[] = [
+const baseProducts: Product[] = [
   {
     id: "cart_live_uplift_citrus",
     name: "UPLIFT CITRUS BLEND",
@@ -366,6 +367,18 @@ export const products: Product[] = [
     servings: "1 serving, 25mg",
   },
 ];
+
+// Studio packaging shots (self-hosted, 4:5) replace the editorial placeholders where available.
+export const products: Product[] = baseProducts.map((p) => {
+  const packshot = packagingImages[p.id];
+  if (!packshot) return p;
+  return {
+    ...p,
+    image: packshot.url,
+    imageAlt: `Moodies ${p.name.toLowerCase()} in its Moodies packaging`,
+  };
+});
+
 
 export const formatZar = (value: number) =>
   `R${Math.round(value)
