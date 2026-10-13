@@ -180,7 +180,7 @@ export const products: Product[] = [
   },
   {
     id: "battery_p107_black",
-    name: "510 PUSH BATTERY P107 \u2014 MIDNIGHT BLACK",
+    name: "510 Push Battery P107, Midnight Black",
     category: "battery",
     subcategory: "push_button",
     mood: "neutral",
@@ -194,7 +194,7 @@ export const products: Product[] = [
   },
   {
     id: "battery_p107_white",
-    name: "510 PUSH BATTERY P107 \u2014 PEARL WHITE",
+    name: "510 Push Battery P107, Pearl White",
     category: "battery",
     subcategory: "push_button",
     mood: "neutral",
@@ -208,7 +208,7 @@ export const products: Product[] = [
   },
   {
     id: "battery_p112_gold",
-    name: "510 PUSH BATTERY P112 \u2014 ROSE GOLD",
+    name: "510 Push Battery P112, Rose Gold",
     category: "battery",
     subcategory: "smart_display",
     mood: "neutral",
@@ -223,7 +223,7 @@ export const products: Product[] = [
   },
   {
     id: "battery_p112_steel",
-    name: "510 PUSH BATTERY P112 \u2014 GUNMETAL STEEL",
+    name: "510 Push Battery P112, Gunmetal Steel",
     category: "battery",
     subcategory: "smart_display",
     mood: "neutral",

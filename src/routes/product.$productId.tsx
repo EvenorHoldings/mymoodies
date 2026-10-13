@@ -155,6 +155,8 @@ function ProductDetail() {
 
           <p className="mt-8 font-display text-3xl font-bold">{formatZar(product.price)}</p>
 
+          {product.category === "battery" ? <BatteryDetails product={product} /> : null}
+
           <div className="mt-6 flex flex-wrap items-center gap-4">
             <div className="flex items-center border border-border">
               <button
@@ -227,5 +229,74 @@ function ProductDetail() {
         </section>
       ) : null}
     </div>
+  );
+}
+
+function BatteryDetails({ product }: { product: Product }) {
+  const hasDisplay = product.subcategory === "smart_display";
+  const cartridges = products.filter((p) => p.category === "cartridge").slice(0, 3);
+  const sections: { title: string; body: string }[] = [
+    {
+      title: "What it is",
+      body: "A rechargeable battery that powers standard 510-thread cartridges. You screw a cartridge on top and the battery heats it when you use it.",
+    },
+    {
+      title: "Compatibility",
+      body: "Fits 510-thread cartridges, including all Moodies cartridges (Live Resin, Mate c10g and Standard c10).",
+    },
+    {
+      title: "How to use",
+      body: hasDisplay
+        ? "Gently screw a 510-thread cartridge onto the top until it stops. Press the button while you draw. The display shows the battery's status."
+        : "Gently screw a 510-thread cartridge onto the top until it stops. Press the button while you draw.",
+    },
+    {
+      title: "Charging",
+      body: "Charges through the USB-C port at the base.",
+    },
+    {
+      title: "Care and safety",
+      body: "Don't overtighten the cartridge. Store away from heat, direct sunlight and water. Don't leave the battery charging unattended. Keep away from children and pets. 18+ only.",
+    },
+  ];
+  return (
+    <section aria-label="Battery details" className="mt-8 border-t border-border pt-6">
+      <dl className="grid gap-5 text-sm">
+        {sections.map((s) => (
+          <div key={s.title}>
+            <dt className="text-[11px] uppercase tracking-[0.18em] text-foreground">{s.title}</dt>
+            <dd className="mt-1 leading-relaxed text-muted-foreground">{s.body}</dd>
+          </div>
+        ))}
+      </dl>
+      {cartridges.length ? (
+        <div className="mt-6">
+          <p className="text-[11px] uppercase tracking-[0.18em] text-foreground">Pairs with</p>
+          <ul className="mt-2 grid gap-1 text-sm">
+            {cartridges.map((c) => (
+              <li key={c.id}>
+                <Link
+                  to="/product/$productId"
+                  params={{ productId: c.id }}
+                  className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+                >
+                  {c.name}
+                </Link>{" "}
+                <span className="text-muted-foreground">· {formatZar(c.price)}</span>
+              </li>
+            ))}
+            <li>
+              <Link
+                to="/shop"
+                search={{ category: "cartridge" }}
+                className="text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+              >
+                All Moodies cartridges
+              </Link>
+            </li>
+          </ul>
+        </div>
+      ) : null}
+    </section>
   );
 }
