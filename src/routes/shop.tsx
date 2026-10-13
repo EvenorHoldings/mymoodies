@@ -15,7 +15,7 @@ export const Route = createFileRoute("/shop")({
   }),
 
   head: () => ({
-    links: [{ rel: "canonical", href: "https://mymoodies.lovable.app/shop" }],
+    links: [{ rel: "canonical", href: "https://www.moodies.life/shop" }],
     meta: [
       { title: "Shop All Products — Moodies" },
       {

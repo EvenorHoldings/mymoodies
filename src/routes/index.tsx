@@ -27,7 +27,7 @@ import wholesaleImage from "@/assets/editorial-wholesale.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    links: [{ rel: "canonical", href: "https://mymoodies.lovable.app/" }],
+    links: [{ rel: "canonical", href: "https://www.moodies.life/" }],
     meta: [
       { title: "Moodies | Premium Mood-Led Wellness South Africa" },
       {
@@ -501,8 +501,8 @@ function Faq() {
           "@context": "https://schema.org",
           "@type": "Organization",
           name: "Moodies",
-          url: "https://mymoodies.lovable.app/",
-          logo: "https://mymoodies.lovable.app/favicon.png",
+          url: "https://www.moodies.life/",
+          logo: "https://www.moodies.life/favicon.png",
           email: "hello@moodies.life",
           areaServed: "ZA",
         })}

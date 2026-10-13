@@ -7,4 +7,4 @@ Disallow: /admin
 Disallow: /orders
 Disallow: /order-confirmed
 
-Sitemap: https://mymoodies.lovable.app/sitemap.xml
+Sitemap: https://www.moodies.life/sitemap.xml

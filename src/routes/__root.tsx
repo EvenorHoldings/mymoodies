@@ -91,7 +91,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         property: "og:image",
         content:
-          "https://mymoodies.lovable.app/__l5e/assets-v1/51650470-de38-493e-a580-c2483708aaf1/editorial-hero-branded.jpg",
+          "https://www.moodies.life/__l5e/assets-v1/51650470-de38-493e-a580-c2483708aaf1/editorial-hero-branded.jpg",
       },
       { name: "twitter:card", content: "summary_large_image" },
     ],

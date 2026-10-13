@@ -4,7 +4,7 @@ build moodies website
 
 This project was built with [Lovable](https://lovable.dev).
 
-**Live app**: https://mymoodies.lovable.app
+**Live app**: https://www.moodies.life
 
 ## Build with Lovable
 
