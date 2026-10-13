@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
-    links: [{ rel: "canonical", href: "https://moodies.life/contact" }],
+    links: [{ rel: "canonical", href: "https://mymoodies.lovable.app/contact" }],
     meta: [
       { title: "Contact Moodies — Orders & Support" },
       {

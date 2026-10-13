@@ -27,7 +27,7 @@ import wholesaleImage from "@/assets/editorial-wholesale.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
-    links: [{ rel: "canonical", href: "https://moodies.life/" }],
+    links: [{ rel: "canonical", href: "https://mymoodies.lovable.app/" }],
     meta: [
       { title: "Moodies | Premium Mood-Led Wellness South Africa" },
       {
@@ -496,6 +496,17 @@ function Faq() {
   return (
     <section ref={ref} id="faq" className="py-24 sm:py-32">
       <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
+      <script type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "Moodies",
+          url: "https://mymoodies.lovable.app/",
+          logo: "https://mymoodies.lovable.app/favicon.png",
+          email: "hello@moodies.life",
+          areaServed: "ZA",
+        })}
+      </script>
       <div className="mx-auto max-w-4xl px-5">
         <SectionHeading
           eyebrow="Considered answers"

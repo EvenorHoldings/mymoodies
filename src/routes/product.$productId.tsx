@@ -27,7 +27,7 @@ export const Route = createFileRoute("/product/$productId")({
         { property: "og:description", content: product.description },
         { property: "og:type", content: "product" },
       ],
-      links: [{ rel: "canonical", href: `https://moodies.life/product/${product.id}` }],
+      links: [{ rel: "canonical", href: `https://mymoodies.lovable.app/product/${product.id}` }],
       scripts: [
         {
           type: "application/ld+json",
@@ -37,13 +37,16 @@ export const Route = createFileRoute("/product/$productId")({
             name: product.name,
             description: product.description,
             sku: product.id,
+            image: product.image.startsWith("http")
+              ? product.image
+              : `https://mymoodies.lovable.app${product.image}`,
             brand: { "@type": "Brand", name: "Moodies" },
             offers: {
               "@type": "Offer",
               priceCurrency: "ZAR",
               price: product.price,
               availability: "https://schema.org/InStock",
-              url: `https://moodies.life/product/${product.id}`,
+              url: `https://mymoodies.lovable.app/product/${product.id}`,
             },
           }),
         },

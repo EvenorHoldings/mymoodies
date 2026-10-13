@@ -109,7 +109,6 @@
   --font-body: "DM Sans", ui-sans-serif, system-ui, sans-serif;
 }
 
-
 .dark {
   --surface-cream: oklch(0.22 0.015 90);
   --background: oklch(0.129 0.042 264.695);
@@ -163,25 +162,43 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: var(--font-display);
     letter-spacing: 0;
   }
 }
 
 @keyframes float-slow {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(18px, -12px, 0); }
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(18px, -12px, 0);
+  }
 }
 
 @keyframes float-slower {
-  0%, 100% { transform: translate3d(0, 0, 0) rotate(12deg); }
-  50% { transform: translate3d(-14px, 16px, 0) rotate(18deg); }
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) rotate(12deg);
+  }
+  50% {
+    transform: translate3d(-14px, 16px, 0) rotate(18deg);
+  }
 }
 
 @keyframes drift-slow {
-  0%, 100% { transform: translate3d(-50%, -50%, 0); }
-  50% { transform: translate3d(-48%, -53%, 0); }
+  0%,
+  100% {
+    transform: translate3d(-50%, -50%, 0);
+  }
+  50% {
+    transform: translate3d(-48%, -53%, 0);
+  }
 }
 
 @utility animate-float-slow {

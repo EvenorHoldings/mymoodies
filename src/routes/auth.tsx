@@ -10,6 +10,7 @@ export const Route = createFileRoute("/auth")({
   head: () => ({
     meta: [
       { title: "Sign In — Moodies" },
+      { name: "robots", content: "noindex" },
       {
         name: "description",
         content: "Sign in to your Moodies account to track orders and view your order history.",
