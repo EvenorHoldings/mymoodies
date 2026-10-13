@@ -6,7 +6,7 @@ export const Route = createFileRoute("/sitemap.xml")({
     handlers: {
       GET: async ({ request }) => {
         const origin = new URL(request.url).origin;
-        const staticPaths = ["/", "/shop", "/about", "/contact", "/legal"];
+        const staticPaths = ["/", "/shop", "/about", "/our-story", "/contact", "/legal"];
         const productPaths = products.map((p) => `/product/${p.id}`);
         const today = new Date().toISOString().slice(0, 10);
 

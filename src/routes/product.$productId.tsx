@@ -1,12 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useState } from "react";
-import {
-  formatZar,
-  moodLabels,
-  products,
-  subcategoryLabels,
-  type Product,
-} from "@/data/products";
+import { formatZar, moodLabels, products, subcategoryLabels, type Product } from "@/data/products";
 import { ProductCard } from "@/components/ProductCard";
 import { useCart } from "@/lib/cart";
 import { moodBg, moodBorder } from "@/lib/mood";
@@ -20,10 +14,7 @@ export const Route = createFileRoute("/product/$productId")({
   head: ({ loaderData }) => {
     if (!loaderData) {
       return {
-        meta: [
-          { title: "Product unavailable — Moodies" },
-          { name: "robots", content: "noindex" },
-        ],
+        meta: [{ title: "Product unavailable — Moodies" }, { name: "robots", content: "noindex" }],
       };
     }
     const { product } = loaderData;
@@ -36,9 +27,7 @@ export const Route = createFileRoute("/product/$productId")({
         { property: "og:description", content: product.description },
         { property: "og:type", content: "product" },
       ],
-      links: [
-        { rel: "canonical", href: `https://moodies.life/product/${product.id}` },
-      ],
+      links: [{ rel: "canonical", href: `https://mymoodies.lovable.app/product/${product.id}` }],
       scripts: [
         {
           type: "application/ld+json",
@@ -48,13 +37,16 @@ export const Route = createFileRoute("/product/$productId")({
             name: product.name,
             description: product.description,
             sku: product.id,
+            image: product.image.startsWith("http")
+              ? product.image
+              : `https://mymoodies.lovable.app${product.image}`,
             brand: { "@type": "Brand", name: "Moodies" },
             offers: {
               "@type": "Offer",
               priceCurrency: "ZAR",
               price: product.price,
               availability: "https://schema.org/InStock",
-              url: `https://moodies.life/product/${product.id}`,
+              url: `https://mymoodies.lovable.app/product/${product.id}`,
             },
           }),
         },
@@ -90,7 +82,9 @@ function ProductDetail() {
   const [added, setAdded] = useState(false);
 
   const related: Product[] = products
-    .filter((p) => p.id !== product.id && (p.mood === product.mood || p.category === product.category))
+    .filter(
+      (p) => p.id !== product.id && (p.mood === product.mood || p.category === product.category),
+    )
     .slice(0, 3);
 
   const handleAdd = () => {
@@ -124,7 +118,8 @@ function ProductDetail() {
           <div className="flex items-center gap-3">
             <span className={`h-2 w-8 ${moodBg(product.mood)}`} aria-hidden />
             <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-              {moodLabels[product.mood]} · {subcategoryLabels[product.subcategory] ?? product.category}
+              {moodLabels[product.mood]} ·{" "}
+              {subcategoryLabels[product.subcategory] ?? product.category}
             </span>
           </div>
 

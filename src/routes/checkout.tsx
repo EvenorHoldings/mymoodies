@@ -38,7 +38,7 @@ function Checkout() {
   const [busy, setBusy] = useState(false);
 
   const field =
-    "w-full border border-border bg-card px-3 py-2 text-sm outline-none focus:border-primary";
+    "w-full border border-border bg-card px-3 py-2 text-sm outline-none focus:border-primary focus-visible:ring-2 focus-visible:ring-ring";
   const label = "text-[11px] uppercase tracking-[0.16em] text-muted-foreground";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
@@ -77,7 +77,6 @@ function Checkout() {
       setBusy(false);
     }
   };
-
 
   if (items.length === 0) {
     return (

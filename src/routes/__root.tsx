@@ -16,7 +16,6 @@ import { CartProvider } from "@/lib/cart";
 import { SiteHeader, SiteFooter } from "../components/SiteChrome";
 import { AgeGate } from "../components/AgeGate";
 
-
 function NotFoundComponent() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-background px-4">
@@ -88,6 +87,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Premium wellness edibles & devices. Emotional clarity. Collectible packaging.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:site_name", content: "Moodies" },
+      {
+        property: "og:image",
+        content:
+          "https://mymoodies.lovable.app/__l5e/assets-v1/51650470-de38-493e-a580-c2483708aaf1/editorial-hero-branded.jpg",
+      },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
@@ -140,4 +145,3 @@ function RootComponent() {
     </QueryClientProvider>
   );
 }
-

@@ -1,14 +1,10 @@
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: facebookexternalhit
-Allow: /
-
 User-agent: *
 Allow: /
+Disallow: /cart
+Disallow: /checkout
+Disallow: /auth
+Disallow: /admin
+Disallow: /orders
+Disallow: /order-confirmed
+
+Sitemap: https://mymoodies.lovable.app/sitemap.xml

@@ -29,7 +29,10 @@ type CartContextValue = {
 };
 
 const globalKey = "__moodiesCartContext" as const;
-const g = globalThis as unknown as Record<string, React.Context<CartContextValue | null> | undefined>;
+const g = globalThis as unknown as Record<
+  string,
+  React.Context<CartContextValue | null> | undefined
+>;
 const CartContext: React.Context<CartContextValue | null> =
   g[globalKey] ?? (g[globalKey] = createContext<CartContextValue | null>(null));
 

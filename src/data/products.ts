@@ -51,7 +51,8 @@ export const products: Product[] = [
     sku: "UPLIFT-LR-CITRUS",
     image: editorialUplift.url,
     imageAlt: "South African creative entrepreneur with Uplift wellness products at a sunlit café",
-    description: "Premium live resin cartridge. Bright citrus blend for morning clarity and creative energy.",
+    description:
+      "Premium live resin cartridge. Bright citrus blend for morning clarity and creative energy.",
     spec: "Live Resin \u00b7 1",
     servings: "Multiple",
   },
@@ -64,7 +65,8 @@ export const products: Product[] = [
     price: 1400,
     sku: "CALM-LR-MINT",
     image: editorialCalm.url,
-    imageAlt: "South African professional relaxing with Calm wellness products in a Cape Town apartment",
+    imageAlt:
+      "South African professional relaxing with Calm wellness products in a Cape Town apartment",
     description: "Premium live resin. Cool mint with subtle floral notes for evening relaxation.",
     spec: "Live Resin \u00b7 1",
     servings: "Multiple",
@@ -106,7 +108,8 @@ export const products: Product[] = [
     price: 1000,
     sku: "CALM-MATE-PINE",
     image: editorialCalm.url,
-    imageAlt: "South African professional relaxing with Calm wellness products in a Cape Town apartment",
+    imageAlt:
+      "South African professional relaxing with Calm wellness products in a Cape Town apartment",
     description: "Mate line, c10g. Tropical pineapple for relaxed focus and calm presence.",
     spec: "Mate \u00b7 1 \u00b7 c10g",
     servings: "Multiple",
@@ -148,7 +151,8 @@ export const products: Product[] = [
     price: 700,
     sku: "CALM-STD-LAV",
     image: editorialCalm.url,
-    imageAlt: "South African professional relaxing with Calm wellness products in a Cape Town apartment",
+    imageAlt:
+      "South African professional relaxing with Calm wellness products in a Cape Town apartment",
     description: "Standard c10 cartridge. Calming lavender notes for relaxation.",
     spec: "Standard \u00b7 1 \u00b7 c10",
     servings: "Multiple",
@@ -232,7 +236,8 @@ export const products: Product[] = [
     price: 350,
     sku: "EDIBLE-GUM-CITRUS",
     image: editorialEdibles.url,
-    imageAlt: "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
+    imageAlt:
+      "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
     description: "Bright citrus blend for morning clarity. Resealable kraft pouch.",
     spec: "5 \u00b7 10 \u00b7 50 \u00b7 Matte kraft pouch, resealable \u00b7 Matte",
     servings: "5 servings, 10mg per serving",
@@ -246,7 +251,8 @@ export const products: Product[] = [
     price: 350,
     sku: "EDIBLE-GUM-BLUE",
     image: editorialEdibles.url,
-    imageAlt: "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
+    imageAlt:
+      "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
     description: "Relaxing blueberry notes for evening ritual. Resealable kraft pouch.",
     spec: "5 \u00b7 10 \u00b7 50 \u00b7 Matte kraft pouch, resealable \u00b7 Matte",
     servings: "5 servings, 10mg per serving",
@@ -260,7 +266,8 @@ export const products: Product[] = [
     price: 350,
     sku: "EDIBLE-GUM-TROP",
     image: editorialEdibles.url,
-    imageAlt: "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
+    imageAlt:
+      "Friends sharing premium Moodies gummies and an artisanal brownie at a Cape Town café",
     description: "Balanced tropical fruit blend. Resealable kraft pouch.",
     spec: "5 \u00b7 10 \u00b7 50 \u00b7 Matte kraft pouch, resealable \u00b7 Matte",
     servings: "5 servings, 10mg per serving",
@@ -352,4 +359,6 @@ export const products: Product[] = [
 ];
 
 export const formatZar = (value: number) =>
-  `R${Math.round(value).toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`;
+  `R${Math.round(value)
+    .toString()
+    .replace(/\B(?=(\d{3})+(?!\d))/g, " ")}`;

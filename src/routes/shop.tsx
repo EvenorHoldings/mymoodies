@@ -15,7 +15,7 @@ export const Route = createFileRoute("/shop")({
   }),
 
   head: () => ({
-    links: [{ rel: "canonical", href: "https://moodies.life/shop" }],
+    links: [{ rel: "canonical", href: "https://mymoodies.lovable.app/shop" }],
     meta: [
       { title: "Shop All Products — Moodies" },
       {
@@ -57,7 +57,6 @@ function Shop() {
 
   const setFilter = (next: Partial<ShopSearch>) =>
     navigate({ search: (prev: ShopSearch) => ({ ...prev, ...next }) });
-
 
   const chip = (active: boolean) =>
     `border px-4 py-2 text-xs uppercase tracking-[0.14em] transition-colors ${

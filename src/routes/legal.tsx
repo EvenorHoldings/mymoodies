@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/legal")({
   head: () => ({
-    links: [{ rel: "canonical", href: "https://moodies.life/legal" }],
+    links: [{ rel: "canonical", href: "https://mymoodies.lovable.app/legal" }],
     meta: [
       { title: "Legal & Terms — Moodies" },
       {
@@ -11,7 +11,10 @@ export const Route = createFileRoute("/legal")({
           "Moodies terms of sale, age restriction, delivery and returns policy for wellness edibles and devices.",
       },
       { property: "og:title", content: "Legal & Terms — Moodies" },
-      { property: "og:description", content: "Terms of sale, age restriction and delivery policy." },
+      {
+        property: "og:description",
+        content: "Terms of sale, age restriction and delivery policy.",
+      },
     ],
   }),
   component: Legal,
