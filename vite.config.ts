@@ -7,6 +7,9 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
 export default defineConfig({
+  // Deploy target: Vercel (serverless functions + static assets in .vercel/output).
+  // Inside the Lovable sandbox the config package forces cloudflare-module regardless.
+  nitro: { preset: "vercel", vercel: { functions: { runtime: "nodejs22.x" } } },
   tanstackStart: {
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
