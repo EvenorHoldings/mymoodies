@@ -17,13 +17,15 @@ import { MoodGuide } from "@/components/MoodGuide";
 import { Button } from "@/components/ui/button";
 import { products } from "@/data/products";
 import { useInView } from "@/hooks/useInView";
-import heroImage from "@/assets/editorial-hero.jpg.asset.json";
-import upliftImage from "@/assets/editorial-uplift.jpg.asset.json";
-import calmImage from "@/assets/editorial-calm.jpg.asset.json";
-import balanceImage from "@/assets/editorial-balance.jpg.asset.json";
-import hardwareImage from "@/assets/editorial-hardware.jpg.asset.json";
-import ediblesImage from "@/assets/editorial-edibles.jpg.asset.json";
-import wholesaleImage from "@/assets/editorial-wholesale.jpg.asset.json";
+import {
+  heroImage,
+  upliftImage,
+  calmImage,
+  balanceImage,
+  hardwareImage,
+  ediblesImage,
+  wholesaleImage,
+} from "@/assets/editorial";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -225,6 +227,7 @@ function MoodCollections() {
                 src={item.image}
                 alt={item.alt}
                 loading="lazy"
+                decoding="async"
                 width={1024}
                 height={1024}
                 className="h-full w-full object-cover transition-transform duration-1000 ease-out motion-reduce:transition-none group-hover:scale-105"
@@ -405,6 +408,7 @@ function InstagramGallery() {
               <img
                 {...image}
                 loading="lazy"
+                decoding="async"
                 width={1024}
                 height={1024}
                 className="aspect-square w-full object-cover transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-105"
@@ -424,8 +428,9 @@ function Wholesale() {
         src={wholesaleImage.url}
         alt="Independent South African concept store carrying premium wellness products"
         loading="lazy"
-        width={1408}
-        height={912}
+        decoding="async"
+        width={wholesaleImage.width}
+        height={wholesaleImage.height}
         className="absolute inset-0 h-full w-full object-cover"
       />
       <div className="absolute inset-0 bg-primary/45" />
@@ -567,10 +572,13 @@ function Index() {
       <section className="relative min-h-[calc(100svh-4rem)] overflow-hidden bg-primary text-primary-foreground">
         <img
           src={heroImage.url}
+          srcSet={`${heroImage.small} 800w, ${heroImage.url} ${heroImage.width}w`}
+          sizes="100vw"
           alt="South African couple relaxing with Moodies wellness products in a refined apartment"
-          width={1200}
-          height={1504}
+          width={heroImage.width}
+          height={heroImage.height}
           fetchPriority="high"
+          decoding="async"
           className="absolute inset-0 h-full w-full object-cover object-[62%_center] opacity-80"
         />
         <div className="absolute inset-0 bg-primary/35" />

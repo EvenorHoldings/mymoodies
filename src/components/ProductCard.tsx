@@ -40,6 +40,7 @@ export function ProductCard({
           src={product.image}
           alt={product.imageAlt}
           loading="lazy"
+          decoding="async"
           width={1024}
           height={1024}
           className="h-full w-full object-cover transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.045]"

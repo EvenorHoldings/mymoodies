@@ -108,6 +108,8 @@ function ProductDetail() {
           <img
             src={product.image}
             alt={product.imageAlt}
+            fetchPriority="high"
+            decoding="async"
             width={1024}
             height={1024}
             className="aspect-[4/5] w-full object-cover transition-transform duration-1000 ease-out motion-reduce:transition-none group-hover:scale-[1.025]"
@@ -176,7 +178,7 @@ function ProductDetail() {
             <button
               type="button"
               onClick={handleAdd}
-              className="bg-primary px-8 py-4 text-xs font-medium uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-85"
+              className="bg-primary px-8 py-4 text-xs font-medium uppercase tracking-[0.18em] text-primary-foreground transition-opacity hover:opacity-85 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
             >
               {added ? "Added to cart" : "Add to cart"}
             </button>
@@ -187,6 +189,24 @@ function ProductDetail() {
               View cart
             </Link>
           </div>
+
+          <ul
+            aria-label="Why shop with Moodies"
+            className="mt-8 grid gap-3 border-t border-border pt-6 text-xs text-muted-foreground sm:grid-cols-3"
+          >
+            <li>
+              <span className="block font-medium text-foreground">Independently tested</span>
+              Purity and consistency
+            </li>
+            <li>
+              <span className="block font-medium text-foreground">Discreet delivery</span>
+              Nationwide, flat R100
+            </li>
+            <li>
+              <span className="block font-medium text-foreground">Secure checkout</span>
+              Private by design
+            </li>
+          </ul>
 
           <p className="mt-6 text-xs text-muted-foreground">
             18+ only. Keep out of reach of children. Not for use during pregnancy.

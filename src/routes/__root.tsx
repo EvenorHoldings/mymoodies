@@ -90,10 +90,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:site_name", content: "Moodies" },
       {
         property: "og:image",
-        content:
-          "https://www.moodies.life/__l5e/assets-v1/51650470-de38-493e-a580-c2483708aaf1/editorial-hero-branded.jpg",
+        content: "https://www.moodies.life/og-image.jpg",
       },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "theme-color", content: "#1f3a2e" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -103,7 +105,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         rel: "stylesheet",
         href: "https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap",
       },
-      { rel: "icon", href: "/favicon.png", type: "image/png" },
+      { rel: "icon", href: "/icon-32.png", type: "image/png", sizes: "32x32" },
+      { rel: "icon", href: "/icon-16.png", type: "image/png", sizes: "16x16" },
+      { rel: "apple-touch-icon", href: "/apple-touch-icon.png", sizes: "180x180" },
+      { rel: "manifest", href: "/site.webmanifest" },
     ],
   }),
   shellComponent: RootShell,

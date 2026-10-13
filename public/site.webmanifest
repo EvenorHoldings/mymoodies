@@ -1,0 +1,12 @@
+{
+  "name": "Moodies — Taste Your Mood",
+  "short_name": "Moodies",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf8f1",
+  "theme_color": "#1f3a2e",
+  "icons": [
+    { "src": "/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

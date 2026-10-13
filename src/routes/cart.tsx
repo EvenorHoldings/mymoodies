@@ -46,6 +46,7 @@ function CartPage() {
                   src={product.image}
                   alt={product.imageAlt}
                   loading="lazy"
+                  decoding="async"
                   width={1024}
                   height={1024}
                   className={`h-24 w-24 border-l-2 bg-secondary object-cover ${moodBorder(product.mood)}`}

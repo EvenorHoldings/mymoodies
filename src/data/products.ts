@@ -1,8 +1,10 @@
-import editorialUplift from "@/assets/editorial-uplift.jpg.asset.json";
-import editorialCalm from "@/assets/editorial-calm.jpg.asset.json";
-import editorialBalance from "@/assets/editorial-balance.jpg.asset.json";
-import editorialHardware from "@/assets/editorial-hardware.jpg.asset.json";
-import editorialEdibles from "@/assets/editorial-edibles.jpg.asset.json";
+import {
+  upliftImage as editorialUplift,
+  calmImage as editorialCalm,
+  balanceImage as editorialBalance,
+  hardwareImage as editorialHardware,
+  ediblesImage as editorialEdibles,
+} from "@/assets/editorial";
 
 export type Mood = "uplift" | "calm" | "balance" | "neutral";
 export type Category = "cartridge" | "battery" | "edible";
