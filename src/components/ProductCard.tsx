@@ -42,7 +42,7 @@ export function ProductCard({
           loading="lazy"
           decoding="async"
           width={1024}
-          height={1024}
+          height={1280}
           className="h-full w-full object-cover transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-[1.045]"
         />
       </Link>

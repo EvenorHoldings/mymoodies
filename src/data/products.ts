@@ -2,9 +2,14 @@ import {
   upliftImage as editorialUplift,
   calmImage as editorialCalm,
   balanceImage as editorialBalance,
-  hardwareImage as editorialHardware,
   ediblesImage as editorialEdibles,
 } from "@/assets/editorial";
+import {
+  batteryP107Black,
+  batteryP107White,
+  batteryP112Gold,
+  batteryP112Steel,
+} from "@/assets/products";
 
 export type Mood = "uplift" | "calm" | "balance" | "neutral";
 export type Category = "cartridge" | "battery" | "edible";
@@ -181,8 +186,8 @@ export const products: Product[] = [
     mood: "neutral",
     price: 400,
     sku: "P107-BLACK",
-    image: editorialHardware.url,
-    imageAlt: "South African architect with a premium black Moodies device in a minimal studio",
+    image: batteryP107Black.url,
+    imageAlt: "Moodies P107 510 thread push battery in midnight black beside its white Moodies box",
     description: "Classic 510 thread push battery. Matte black finish, USB-C charging.",
     spec: "510 Thread \u00b7 P107 \u00b7 1000 \u00b7 USB-C \u00b7 None \u00b7 Midnight Black \u00b7 Matte",
     servings: "N/A",
@@ -195,8 +200,8 @@ export const products: Product[] = [
     mood: "neutral",
     price: 400,
     sku: "P107-WHITE",
-    image: editorialHardware.url,
-    imageAlt: "South African architect with a premium Moodies device in a minimal studio",
+    image: batteryP107White.url,
+    imageAlt: "Moodies P107 510 thread push battery in pearl white beside its white Moodies box",
     description: "Classic 510 thread push battery. Pearl white finish, USB-C charging.",
     spec: "510 Thread \u00b7 P107 \u00b7 1000 \u00b7 USB-C \u00b7 None \u00b7 Pearl White \u00b7 Matte",
     servings: "N/A",
@@ -209,8 +214,9 @@ export const products: Product[] = [
     mood: "neutral",
     price: 400,
     sku: "P112-GOLD",
-    image: editorialHardware.url,
-    imageAlt: "South African architect with a premium smart device in a minimal studio",
+    image: batteryP112Gold.url,
+    imageAlt:
+      "Moodies P112 510 thread smart display battery in rose gold beside its white Moodies box",
     description: "Smart 510 battery with LED display. Rose gold finish, 1200mAh capacity.",
     spec: "510 Thread \u00b7 P112 \u00b7 1200 \u00b7 USB-C \u00b7 LED Smart Display \u00b7 Rose Gold \u00b7 Metallic",
     servings: "N/A",
@@ -223,8 +229,9 @@ export const products: Product[] = [
     mood: "neutral",
     price: 400,
     sku: "P112-STEEL",
-    image: editorialHardware.url,
-    imageAlt: "South African architect with a premium steel device in a minimal studio",
+    image: batteryP112Steel.url,
+    imageAlt:
+      "Moodies P112 510 thread smart display battery in gunmetal steel beside its white Moodies box",
     description: "Smart 510 battery with LED display. Gunmetal steel finish, 1200mAh capacity.",
     spec: "510 Thread \u00b7 P112 \u00b7 1200 \u00b7 USB-C \u00b7 LED Smart Display \u00b7 Gunmetal Steel \u00b7 Metallic",
     servings: "N/A",
