@@ -79,6 +79,7 @@ function ErrorComponent({ error, reset }: ErrorComponentProps) {
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
+      { name: "google-site-verification", content: "PRRLqCylGIuOAuIsbbNTyrWzEEPJVFwO3BlSaBklROk" },
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Moodies — Taste Your Mood" },
