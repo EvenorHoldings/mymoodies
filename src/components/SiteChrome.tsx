@@ -51,7 +51,13 @@ export function SiteHeader() {
     <header className="sticky top-0 z-50 border-b border-border bg-background/90 backdrop-blur">
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-4 px-5">
         <Link to="/" aria-label="Moodies home" className="flex items-center">
-          <img src={moodiesLogo} alt="Moodies" width={1326} height={273} className="h-6 w-auto sm:h-7" />
+          <img
+            src={moodiesLogo}
+            alt="Moodies"
+            width={1326}
+            height={273}
+            className="h-6 w-auto sm:h-7"
+          />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-8 md:flex">
@@ -201,17 +207,29 @@ export function SiteFooter() {
               </Link>
             </li>
             <li>
-              <Link to="/shop" search={{ mood: "uplift", category: undefined }} className={footerLinkClass}>
+              <Link
+                to="/shop"
+                search={{ mood: "uplift", category: undefined }}
+                className={footerLinkClass}
+              >
                 Uplift
               </Link>
             </li>
             <li>
-              <Link to="/shop" search={{ mood: "calm", category: undefined }} className={footerLinkClass}>
+              <Link
+                to="/shop"
+                search={{ mood: "calm", category: undefined }}
+                className={footerLinkClass}
+              >
                 Calm
               </Link>
             </li>
             <li>
-              <Link to="/shop" search={{ mood: "balance", category: undefined }} className={footerLinkClass}>
+              <Link
+                to="/shop"
+                search={{ mood: "balance", category: undefined }}
+                className={footerLinkClass}
+              >
                 Balance
               </Link>
             </li>

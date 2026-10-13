@@ -23,11 +23,26 @@ export const Route = createFileRoute("/our-story")({
 });
 
 const values = [
-  { title: "Mood first", copy: "Start with how you want to feel, then choose the format. Uplift, Calm or Balance." },
-  { title: "Radical clarity", copy: "Doses, servings and prices printed plainly. No health claims, no theatre." },
-  { title: "Proudly South African", copy: "Built and registered in South Africa, made for the way we live here." },
-  { title: "Responsible enjoyment", copy: "Strictly 18+, discreetly packaged, and always guided by moderation." },
-  { title: "Always better", copy: "Our parent company's promise: every batch, box and order a little better than the last." },
+  {
+    title: "Mood first",
+    copy: "Start with how you want to feel, then choose the format. Uplift, Calm or Balance.",
+  },
+  {
+    title: "Radical clarity",
+    copy: "Doses, servings and prices printed plainly. No health claims, no theatre.",
+  },
+  {
+    title: "Proudly South African",
+    copy: "Built and registered in South Africa, made for the way we live here.",
+  },
+  {
+    title: "Responsible enjoyment",
+    copy: "Strictly 18+, discreetly packaged, and always guided by moderation.",
+  },
+  {
+    title: "Always better",
+    copy: "Our parent company's promise: every batch, box and order a little better than the last.",
+  },
 ];
 
 function OurStory() {
@@ -36,10 +51,12 @@ function OurStory() {
       <section className="bg-surface-cream py-24 sm:py-32">
         <div className="mx-auto max-w-3xl px-5 text-center">
           <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">Our story</p>
-          <h1 className="mt-5 font-display text-4xl font-bold uppercase sm:text-6xl">Taste Your Mood.</h1>
+          <h1 className="mt-5 font-display text-4xl font-bold uppercase sm:text-6xl">
+            Taste Your Mood.
+          </h1>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted-foreground">
-            Moodies is a South African wellness brand built on one simple idea: how you want to
-            feel should guide what you choose.
+            Moodies is a South African wellness brand built on one simple idea: how you want to feel
+            should guide what you choose.
           </p>
         </div>
       </section>
@@ -76,7 +93,9 @@ function OurStory() {
           <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {values.map((v) => (
               <div key={v.title} className="rounded-lg border border-border bg-card p-6">
-                <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em]">{v.title}</h3>
+                <h3 className="font-display text-sm font-bold uppercase tracking-[0.14em]">
+                  {v.title}
+                </h3>
                 <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{v.copy}</p>
               </div>
             ))}

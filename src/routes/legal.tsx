@@ -11,7 +11,10 @@ export const Route = createFileRoute("/legal")({
           "Moodies terms of sale, age restriction, delivery and returns policy for wellness edibles and devices.",
       },
       { property: "og:title", content: "Legal & Terms — Moodies" },
-      { property: "og:description", content: "Terms of sale, age restriction and delivery policy." },
+      {
+        property: "og:description",
+        content: "Terms of sale, age restriction and delivery policy.",
+      },
     ],
   }),
   component: Legal,

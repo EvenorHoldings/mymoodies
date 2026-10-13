@@ -2,12 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useServerFn } from "@tanstack/react-start";
 import { formatZar } from "@/data/products";
-import {
-  ORDER_STATUSES,
-  amIAdmin,
-  listAllOrders,
-  updateOrderStatus,
-} from "@/lib/admin.functions";
+import { ORDER_STATUSES, amIAdmin, listAllOrders, updateOrderStatus } from "@/lib/admin.functions";
 
 export const Route = createFileRoute("/_authenticated/admin")({
   head: () => ({
@@ -129,9 +124,7 @@ function AdminPage() {
                     key={status}
                     type="button"
                     disabled={mutation.isPending || order.status === status}
-                    onClick={() =>
-                      mutation.mutate({ orderNumber: order.orderNumber, status })
-                    }
+                    onClick={() => mutation.mutate({ orderNumber: order.orderNumber, status })}
                     className={`border px-3 py-1.5 text-[11px] uppercase tracking-[0.14em] transition-colors disabled:cursor-default ${
                       order.status === status
                         ? "border-primary bg-primary text-primary-foreground"

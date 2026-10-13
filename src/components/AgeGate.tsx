@@ -21,9 +21,7 @@ export function AgeGate() {
 
     const node = dialogRef.current;
     const focusables = () =>
-      Array.from(
-        node?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ?? []
-      );
+      Array.from(node?.querySelectorAll<HTMLElement>("a[href], button:not([disabled])") ?? []);
     focusables()[0]?.focus();
 
     const onKeyDown = (event: KeyboardEvent) => {
@@ -72,7 +70,10 @@ export function AgeGate() {
       aria-describedby="age-gate-copy"
       className="fixed inset-0 z-50 flex items-center justify-center bg-background/95 px-5 backdrop-blur"
     >
-      <div ref={dialogRef} className="w-full max-w-md rounded-lg border border-border bg-card p-8 text-center">
+      <div
+        ref={dialogRef}
+        className="w-full max-w-md rounded-lg border border-border bg-card p-8 text-center"
+      >
         <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">
           Moodies · Taste Your Mood
         </p>

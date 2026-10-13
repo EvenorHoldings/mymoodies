@@ -58,7 +58,6 @@ function Shop() {
   const setFilter = (next: Partial<ShopSearch>) =>
     navigate({ search: (prev: ShopSearch) => ({ ...prev, ...next }) });
 
-
   const chip = (active: boolean) =>
     `border px-4 py-2 text-xs uppercase tracking-[0.14em] transition-colors ${
       active

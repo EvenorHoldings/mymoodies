@@ -81,14 +81,14 @@
   --secondary: oklch(0.885 0.02 125);
   --secondary-foreground: oklch(0.29 0.045 151);
   --muted: oklch(0.95 0.012 100);
-  --muted-foreground: oklch(0.52 0.025 145);
+  --muted-foreground: oklch(0.47 0.025 145);
   --accent: oklch(0.7 0.09 78);
   --accent-foreground: oklch(0.22 0.03 151);
   --destructive: oklch(0.55 0.2 27);
   --destructive-foreground: oklch(0.99 0 0);
   --border: oklch(0.89 0.016 100);
   --input: oklch(0.89 0.016 100);
-  --ring: oklch(0.7 0.09 78);
+  --ring: oklch(0.55 0.09 78);
   --uplift: oklch(0.83 0.16 89);
   --calm: oklch(0.66 0.07 194);
   --balance: oklch(0.53 0.11 315);
@@ -149,6 +149,11 @@
 @layer base {
   * {
     border-color: var(--color-border);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
   }
 
   body {

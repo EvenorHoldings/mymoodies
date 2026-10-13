@@ -56,7 +56,6 @@ function OrderConfirmed() {
     );
   }
 
-
   return (
     <div className="mx-auto max-w-3xl px-5 py-16">
       <p className="text-[11px] uppercase tracking-[0.28em] text-muted-foreground">Thank you</p>
@@ -108,7 +107,9 @@ function OrderConfirmed() {
       </dl>
 
       <div className="mt-10 border border-border p-6 text-sm">
-        <h2 className="font-display text-sm font-bold uppercase tracking-[0.16em]">Delivering to</h2>
+        <h2 className="font-display text-sm font-bold uppercase tracking-[0.16em]">
+          Delivering to
+        </h2>
         <p className="mt-3 text-muted-foreground">
           {order.name}
           <br />

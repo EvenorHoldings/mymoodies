@@ -81,7 +81,6 @@ function CartPage() {
                     >
                       Remove
                     </button>
-
                   </div>
                 </div>
                 <span className="font-display text-sm font-bold">

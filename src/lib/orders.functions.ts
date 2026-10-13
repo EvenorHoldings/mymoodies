@@ -38,9 +38,8 @@ export type OrderRecord = {
 export const placeOrder = createServerFn({ method: "POST" })
   .inputValidator((input: unknown) => orderInputSchema.parse(input))
   .handler(async ({ data }): Promise<{ orderNumber: string }> => {
-    const { SHIPPING_ZAR, makeOrderNumber, resolveOptionalUserId } = await import(
-      "./orders.server"
-    );
+    const { SHIPPING_ZAR, makeOrderNumber, resolveOptionalUserId } =
+      await import("./orders.server");
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     const authHeader = getRequestHeader("authorization") ?? null;
