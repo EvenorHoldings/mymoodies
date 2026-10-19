@@ -60,11 +60,8 @@ function Checkout() {
           phone: String(data.get("phone") ?? "").trim(),
           address: String(data.get("address") ?? "").trim(),
           payment: payment as "card" | "snapscan" | "eft",
-          items: items.map((i) => ({
-            name: i.product.name,
-            quantity: i.quantity,
-            price: i.product.price,
-          })),
+          // Prices are calculated on the server from the catalogue; only ids and quantities are sent.
+          items: items.map((i) => ({ id: i.product.id, quantity: i.quantity })),
         },
       });
 
@@ -109,19 +106,44 @@ function Checkout() {
             <div className="grid gap-4 sm:grid-cols-2">
               <label className="space-y-1.5">
                 <span className={label}>Full name</span>
-                <input name="name" required className={field} />
+                <input name="name" required maxLength={120} autoComplete="name" className={field} />
               </label>
               <label className="space-y-1.5">
                 <span className={label}>Email</span>
-                <input name="email" type="email" required className={field} />
+                <input
+                  name="email"
+                  type="email"
+                  required
+                  maxLength={255}
+                  autoComplete="email"
+                  className={field}
+                />
               </label>
               <label className="space-y-1.5 sm:col-span-2">
                 <span className={label}>Phone</span>
-                <input name="phone" required className={field} />
+                <input
+                  name="phone"
+                  type="tel"
+                  required
+                  minLength={7}
+                  maxLength={40}
+                  pattern="[+0-9\(][0-9 \(\)\.\-]*"
+                  title="Digits, spaces, +, ( ) and - only"
+                  autoComplete="tel"
+                  className={field}
+                />
               </label>
               <label className="space-y-1.5 sm:col-span-2">
                 <span className={label}>Delivery address</span>
-                <textarea name="address" required rows={3} className={field} />
+                <textarea
+                  name="address"
+                  required
+                  minLength={5}
+                  maxLength={600}
+                  rows={3}
+                  autoComplete="street-address"
+                  className={field}
+                />
               </label>
             </div>
             <p className="text-xs text-muted-foreground">

@@ -14,6 +14,7 @@ export type CartLine = { id: string; quantity: number };
 export type CartItem = { product: Product; quantity: number };
 
 const STORAGE_KEY = "moodies_cart_v1";
+const MAX_PER_LINE = 99;
 export const SHIPPING_ZAR = 100;
 
 type CartContextValue = {
@@ -42,7 +43,19 @@ export function CartProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
     try {
       const raw = window.localStorage.getItem(STORAGE_KEY);
-      if (raw) setLines(JSON.parse(raw) as CartLine[]);
+      if (raw) {
+        const parsed: unknown = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          setLines(
+            parsed
+              .filter(
+                (l): l is CartLine =>
+                  typeof l?.id === "string" && Number.isInteger(l?.quantity) && l.quantity > 0,
+              )
+              .map((l) => ({ id: l.id, quantity: Math.min(MAX_PER_LINE, l.quantity) })),
+          );
+        }
+      }
     } catch {
       /* ignore */
     }
@@ -60,9 +73,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setLines((prev) => {
       const existing = prev.find((l) => l.id === id);
       if (existing) {
-        return prev.map((l) => (l.id === id ? { ...l, quantity: l.quantity + quantity } : l));
+        return prev.map((l) =>
+          l.id === id ? { ...l, quantity: Math.min(MAX_PER_LINE, l.quantity + quantity) } : l,
+        );
       }
-      return [...prev, { id, quantity }];
+      return [...prev, { id, quantity: Math.min(MAX_PER_LINE, quantity) }];
     });
   }, []);
 
@@ -70,7 +85,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setLines((prev) =>
       quantity <= 0
         ? prev.filter((l) => l.id !== id)
-        : prev.map((l) => (l.id === id ? { ...l, quantity } : l)),
+        : prev.map((l) => (l.id === id ? { ...l, quantity: Math.min(MAX_PER_LINE, quantity) } : l)),
     );
   }, []);
 

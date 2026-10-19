@@ -1,15 +1,56 @@
 import { createClient } from "@supabase/supabase-js";
 import type { OrderRecord } from "./orders.functions";
+import { products } from "@/data/products";
 
 export const SHIPPING_ZAR = 100;
 
+// No 0/O/1/I/L to keep order numbers easy to read out over the phone.
+const ORDER_ALPHABET = "23456789ABCDEFGHJKMNPQRSTUVWXYZ";
+
+/** MOO-YYYYMMDD-XXXXXX with 6 cryptographically random characters (~887 million per day). */
 export function makeOrderNumber() {
   const now = new Date();
   const stamp = `${now.getFullYear()}${String(now.getMonth() + 1).padStart(2, "0")}${String(
     now.getDate(),
   ).padStart(2, "0")}`;
-  const seq = String(Math.floor(Math.random() * 9999) + 1).padStart(4, "0");
-  return `MOO-${stamp}-${seq}`;
+  const bytes = crypto.getRandomValues(new Uint8Array(6));
+  const suffix = Array.from(bytes, (b) => ORDER_ALPHABET[b % ORDER_ALPHABET.length]).join("");
+  return `MOO-${stamp}-${suffix}`;
+}
+
+/** Escapes LIKE/ILIKE wildcards so user input is matched literally. */
+export function escapeLike(value: string) {
+  return value.replace(/[\\%_]/g, (char) => `\\${char}`);
+}
+
+export type PricedOrderItem = { id: string; name: string; quantity: number; price: number };
+
+/**
+ * Resolves requested items against the server-side catalogue. Prices and names
+ * come from the catalogue only; anything the client sent for them is ignored.
+ * Duplicate lines are merged. Unknown products reject the whole order.
+ */
+export function priceOrderItems(
+  requested: { id?: string | undefined; name?: string | undefined; quantity: number }[],
+): PricedOrderItem[] {
+  const merged = new Map<string, PricedOrderItem>();
+  for (const line of requested) {
+    const product =
+      (line.id ? products.find((p) => p.id === line.id) : undefined) ??
+      (!line.id && line.name ? products.find((p) => p.name === line.name) : undefined);
+    if (!product) throw new Error("One of the items in your cart is no longer available.");
+
+    const existing = merged.get(product.id);
+    const quantity = (existing?.quantity ?? 0) + line.quantity;
+    if (quantity > 99) throw new Error("Please order at most 99 of any one product.");
+    merged.set(product.id, {
+      id: product.id,
+      name: product.name,
+      quantity,
+      price: product.price,
+    });
+  }
+  return [...merged.values()];
 }
 
 /** Returns the signed-in user id when a valid bearer token is present, otherwise null (guest). */

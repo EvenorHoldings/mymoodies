@@ -34,7 +34,9 @@ function AuthPage() {
     "w-full border border-border bg-card px-3 py-2 text-sm outline-none focus:border-primary focus-visible:ring-2 focus-visible:ring-ring";
   const label = "text-[11px] uppercase tracking-[0.16em] text-muted-foreground";
 
-  const destination = search.redirect?.startsWith("/") ? search.redirect : "/orders";
+  // Only allow same-site paths ("/orders"), never "//evil.com" or "/\\evil.com".
+  const destination =
+    search.redirect && /^\/(?![/\\])/.test(search.redirect) ? search.redirect : "/orders";
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -94,11 +96,26 @@ function AuthPage() {
       <form onSubmit={handleSubmit} className="mt-8 space-y-4">
         <label className="block space-y-1.5">
           <span className={label}>Email</span>
-          <input name="email" type="email" required className={field} />
+          <input
+            name="email"
+            type="email"
+            required
+            maxLength={255}
+            autoComplete="email"
+            className={field}
+          />
         </label>
         <label className="block space-y-1.5">
           <span className={label}>Password</span>
-          <input name="password" type="password" required minLength={6} className={field} />
+          <input
+            name="password"
+            type="password"
+            required
+            minLength={mode === "signup" ? 8 : 6}
+            maxLength={72}
+            autoComplete={mode === "signup" ? "new-password" : "current-password"}
+            className={field}
+          />
         </label>
 
         {error ? <p className="text-sm text-destructive">{error}</p> : null}

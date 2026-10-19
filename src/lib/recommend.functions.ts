@@ -7,6 +7,19 @@ export const recommendProducts = createServerFn({ method: "POST" })
   .inputValidator((data) => z.object({ prompt: z.string().trim().min(3).max(500) }).parse(data))
   .handler(
     async ({ data }): Promise<{ intro: string; picks: Recommendation[]; error?: string }> => {
+      const { enforceRateLimit, RateLimitError } = await import("./rate-limit.server");
+      try {
+        // Each request spends AI credits; cap per visitor.
+        enforceRateLimit("recommend", 8, 10 * 60 * 1000);
+      } catch (e) {
+        if (e instanceof RateLimitError)
+          return {
+            intro: "",
+            picks: [],
+            error: "Our guide is busy right now. Please try again in a few minutes.",
+          };
+        throw e;
+      }
       const apiKey = process.env["LOVABLE_API_KEY"];
       if (!apiKey)
         return { intro: "", picks: [], error: "Recommendations are not configured yet." };
@@ -52,7 +65,13 @@ export const recommendProducts = createServerFn({ method: "POST" })
         const picks = (Array.isArray(json.picks) ? json.picks : [])
           .filter((p: Recommendation) => ids.has(p.id))
           .slice(0, 4);
-        return { intro: String(json.intro ?? ""), picks };
+        return {
+          intro: String(json.intro ?? "").slice(0, 400),
+          picks: picks.map((p: Recommendation) => ({
+            id: p.id,
+            reason: String(p.reason ?? "").slice(0, 300),
+          })),
+        };
       } catch (e) {
         const status = (e as { statusCode?: number }).statusCode;
         const msg =
