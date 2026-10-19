@@ -54,8 +54,8 @@ export function SiteHeader() {
           <img
             src={moodiesLogo}
             alt="Moodies"
-            width={1326}
-            height={273}
+            width={1042}
+            height={254}
             className="h-6 w-auto sm:h-7"
           />
         </Link>
