@@ -8,6 +8,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { amIAdmin } from "@/lib/admin.functions";
 import { supabase } from "@/integrations/supabase/client";
 import moodiesLogo from "@/assets/moodies-logo.png";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 
 const navLinks = [
   { to: "/", label: "Home" },
@@ -256,13 +257,13 @@ export function SiteFooter() {
             </li>
             <li>
               <a
-                href="https://instagram.com/moodies"
+                href={INSTAGRAM_URL}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label="Moodies on Instagram (opens in a new tab)"
                 className={footerLinkClass}
               >
-                @moodies
+                {INSTAGRAM_HANDLE}
               </a>
             </li>
           </ul>

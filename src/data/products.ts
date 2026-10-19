@@ -368,6 +368,28 @@ const baseProducts: Product[] = [
   },
 ];
 
+const titleCase = (value: string) =>
+  value.toLowerCase().replace(/\b([a-z])/g, (char) => char.toUpperCase());
+
+/** Describes exactly what the studio packshot shows for each format. */
+function packshotAlt(p: Product): string {
+  const name = titleCase(p.name);
+  switch (p.subcategory) {
+    case "live_resin":
+    case "mate":
+    case "standard":
+      return `Moodies ${subcategoryLabels[p.subcategory]} cartridge, ${name}, beside its Moodies box`;
+    case "gummies":
+      return `Moodies ${name} kraft pouch with gummies in front`;
+    case "cookies":
+      return `Moodies ${name} beside its Moodies cookie box`;
+    case "brownies":
+      return `Moodies ${name} beside its Moodies brownie box`;
+    default:
+      return `Moodies ${name} in its Moodies packaging`;
+  }
+}
+
 // Studio packaging shots (self-hosted, 4:5) replace the editorial placeholders where available.
 export const products: Product[] = baseProducts.map((p) => {
   const packshot = packagingImages[p.id];
@@ -375,10 +397,9 @@ export const products: Product[] = baseProducts.map((p) => {
   return {
     ...p,
     image: packshot.url,
-    imageAlt: `Moodies ${p.name.toLowerCase()} in its Moodies packaging`,
+    imageAlt: packshotAlt(p),
   };
 });
-
 
 export const formatZar = (value: number) =>
   `R${Math.round(value)

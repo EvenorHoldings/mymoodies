@@ -15,17 +15,18 @@ import {
 import { ProductCard } from "@/components/ProductCard";
 import { MoodGuide } from "@/components/MoodGuide";
 import { Button } from "@/components/ui/button";
-import { products } from "@/data/products";
+import { formatZar, products } from "@/data/products";
 import { useInView } from "@/hooks/useInView";
 import {
   heroImage,
   upliftImage,
   calmImage,
   balanceImage,
-  hardwareImage,
   ediblesImage,
   wholesaleImage,
 } from "@/assets/editorial";
+import { batteryP112Gold, packagingImages } from "@/assets/products";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -55,23 +56,55 @@ const moods = [
     title: "Uplift",
     copy: "Bright profiles for creative energy and social moments.",
     image: upliftImage.url,
-    alt: "Creative entrepreneur enjoying an Uplift moment at a sunlit café",
+    alt: "Woman writing at a sunlit café table beside a Moodies Uplift pouch and device",
   },
   {
     mood: "calm",
     title: "Calm",
     copy: "Quiet blends made for slower evenings and considered rituals.",
     image: calmImage.url,
-    alt: "Professional relaxing with Calm products in a Cape Town apartment",
+    alt: "Woman unwinding in a Cape Town apartment with a Moodies Calm pouch and device on the table",
   },
   {
     mood: "balance",
     title: "Balance",
     copy: "Grounded formulations for steady, everyday ease.",
     image: balanceImage.url,
-    alt: "Friends connecting over Balance products at golden hour",
+    alt: "Three friends talking on a sofa at golden hour with a Moodies Balance pouch on the table",
   },
 ] as const;
+
+const categories = [
+  {
+    category: "cartridge",
+    title: "Cartridges",
+    copy: "Live Resin, Mate c10g and Standard c10 cartridges in every mood. 510-thread.",
+    image: packagingImages["cart_live_calm_mint"]!,
+    alt: "Moodies Live Resin Calm cartridge standing beside its Moodies box",
+  },
+  {
+    category: "battery",
+    title: "510 Batteries",
+    copy: "Rechargeable P107 push and P112 smart-display batteries that fit every Moodies cartridge.",
+    image: batteryP112Gold,
+    alt: "Moodies P112 510-thread battery in rose gold beside its Moodies box",
+  },
+  {
+    category: "edible",
+    title: "Edibles",
+    copy: "Home grown gummies, cookies and brownies with the dose printed clearly on every pack.",
+    image: packagingImages["edible_gummies_uplift_citrus"]!,
+    alt: "Moodies Uplift citrus gummies pouch with gummies in front",
+  },
+] as const;
+
+// One pick from each part of the range, so the section reflects the whole catalogue.
+const bestSellerIds = [
+  "cart_live_calm_mint",
+  "battery_p107_black",
+  "edible_gummies_uplift_citrus",
+  "edible_brownies_balance_seasalt",
+];
 
 const faqs = [
   {
@@ -247,6 +280,61 @@ function MoodCollections() {
   );
 }
 
+function ShopByCategory() {
+  return (
+    <section id="categories" className="py-24 sm:py-32">
+      <div className="mx-auto max-w-7xl px-5">
+        <SectionHeading
+          eyebrow="Shop by format"
+          title="Choose how you enjoy it."
+          copy="Every mood comes in cartridges and edibles. Pair any cartridge with a Moodies 510 battery."
+        />
+        <div className="mt-14 grid gap-5 md:grid-cols-3">
+          {categories.map((item) => (
+            <Link
+              key={item.category}
+              to="/shop"
+              search={{ category: item.category }}
+              className="group flex flex-col border border-border bg-card"
+            >
+              <div className="aspect-[4/5] overflow-hidden bg-secondary">
+                <img
+                  src={item.image.url}
+                  srcSet={`${item.image.small} 800w, ${item.image.url} ${item.image.width}w`}
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  alt={item.alt}
+                  loading="lazy"
+                  decoding="async"
+                  width={item.image.width}
+                  height={item.image.height}
+                  className="h-full w-full object-cover transition-transform duration-1000 ease-out motion-reduce:transition-none group-hover:scale-105"
+                />
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <div className="flex items-baseline justify-between gap-4">
+                  <h3 className="font-display text-2xl font-semibold">{item.title}</h3>
+                  <span className="text-xs text-muted-foreground">
+                    From{" "}
+                    {formatZar(
+                      Math.min(
+                        ...products.filter((p) => p.category === item.category).map((p) => p.price),
+                      ),
+                    )}
+                  </span>
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">{item.copy}</p>
+                <span className="mt-auto inline-flex items-center gap-2 pt-5 text-[10px] font-semibold uppercase tracking-[0.18em]">
+                  Shop {item.title} <ArrowRight className="size-3" />
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function BestSellers() {
   return (
     <section className="py-24 sm:py-32">
@@ -261,9 +349,12 @@ function BestSellers() {
           </Link>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-4 md:grid-cols-4 md:gap-6">
-          {products.slice(0, 4).map((product) => (
-            <ProductCard key={product.id} product={product} compact />
-          ))}
+          {bestSellerIds
+            .map((id) => products.find((p) => p.id === id))
+            .filter((p): p is (typeof products)[number] => Boolean(p))
+            .map((product) => (
+              <ProductCard key={product.id} product={product} compact />
+            ))}
         </div>
         <div className="mt-8 text-center sm:hidden">
           <Link to="/shop" className="text-xs font-semibold uppercase tracking-[0.16em]">
@@ -377,10 +468,16 @@ function Reviews() {
 
 function InstagramGallery() {
   const images = [
-    { src: upliftImage.url, alt: "Creative morning at a South African café" },
-    { src: ediblesImage.url, alt: "Friends sharing an artisanal Moodies moment" },
-    { src: calmImage.url, alt: "Quiet evening ritual in Cape Town" },
-    { src: hardwareImage.url, alt: "Creative studio with a premium Moodies device" },
+    {
+      src: upliftImage.small,
+      alt: "Woman at a sunlit café table with a Moodies Uplift pouch and device",
+    },
+    {
+      src: ediblesImage.small,
+      alt: "Two friends sharing Moodies gummies and a brownie over coffee",
+    },
+    { src: calmImage.small, alt: "Quiet evening in a Cape Town apartment with Moodies Calm" },
+    { src: balanceImage.small, alt: "Friends relaxing at golden hour with Moodies Balance" },
   ];
   return (
     <section className="py-24 sm:py-32">
@@ -388,19 +485,19 @@ function InstagramGallery() {
         <div className="flex items-end justify-between gap-5">
           <SectionHeading eyebrow="From our community" title="Life, in every mood." />
           <a
-            href="https://instagram.com/moodies"
+            href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs font-semibold uppercase tracking-[0.16em]"
           >
-            Follow @moodies
+            Follow {INSTAGRAM_HANDLE}
           </a>
         </div>
         <div className="mt-12 grid grid-cols-2 gap-3 md:grid-cols-4">
           {images.map((image) => (
             <a
               key={image.alt}
-              href="https://instagram.com/moodies"
+              href={INSTAGRAM_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="group overflow-hidden"
@@ -409,8 +506,8 @@ function InstagramGallery() {
                 {...image}
                 loading="lazy"
                 decoding="async"
-                width={1024}
-                height={1024}
+                width={800}
+                height={800}
                 className="aspect-square w-full object-cover transition-transform duration-700 ease-out motion-reduce:transition-none group-hover:scale-105"
               />
             </a>
@@ -426,7 +523,7 @@ function Wholesale() {
     <section className="relative min-h-[70vh] overflow-hidden">
       <img
         src={wholesaleImage.url}
-        alt="Independent South African concept store carrying premium wellness products"
+        alt="Shop owner talking with a customer in a South African concept store with wellness products on the shelves"
         loading="lazy"
         decoding="async"
         width={wholesaleImage.width}
@@ -510,6 +607,7 @@ function Faq() {
           logo: "https://www.moodies.life/favicon.png",
           email: "hello@moodies.life",
           areaServed: "ZA",
+          sameAs: [INSTAGRAM_URL],
         })}
       </script>
       <div className="mx-auto max-w-4xl px-5">
@@ -610,6 +708,7 @@ function Index() {
       <TrustIndicators />
       <HowItWorks />
       <MoodCollections />
+      <ShopByCategory />
       <BestSellers />
       <WhyMoodies />
       <Reviews />

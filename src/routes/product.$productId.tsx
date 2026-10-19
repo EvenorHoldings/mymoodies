@@ -81,11 +81,13 @@ function ProductDetail() {
   const [qty, setQty] = useState(1);
   const [added, setAdded] = useState(false);
 
-  const related: Product[] = products
-    .filter(
-      (p) => p.id !== product.id && (p.mood === product.mood || p.category === product.category),
-    )
-    .slice(0, 3);
+  // Same format first (e.g. other edibles for an edible), then same mood, so suggestions stay relevant.
+  const others = products.filter((p) => p.id !== product.id);
+  const related: Product[] = [
+    ...others.filter((p) => p.category === product.category && p.mood === product.mood),
+    ...others.filter((p) => p.category === product.category && p.mood !== product.mood),
+    ...others.filter((p) => p.category !== product.category && p.mood === product.mood),
+  ].slice(0, 3);
 
   const handleAdd = () => {
     for (let i = 0; i < qty; i += 1) add(product.id);
@@ -110,8 +112,8 @@ function ProductDetail() {
             alt={product.imageAlt}
             fetchPriority="high"
             decoding="async"
-            width={1024}
-            height={1024}
+            width={960}
+            height={1200}
             className="aspect-[4/5] w-full object-cover transition-transform duration-1000 ease-out motion-reduce:transition-none group-hover:scale-[1.025]"
           />
         </div>

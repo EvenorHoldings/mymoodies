@@ -1,4 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -34,12 +35,12 @@ function Contact() {
         <div className="border border-border p-6">
           <h2 className="font-display text-sm font-bold uppercase tracking-[0.16em]">Instagram</h2>
           <a
-            href="https://instagram.com/moodies"
+            href={INSTAGRAM_URL}
             target="_blank"
-            rel="noreferrer"
+            rel="noopener noreferrer"
             className="mt-3 block text-sm text-muted-foreground hover:text-foreground"
           >
-            @moodies
+            {INSTAGRAM_HANDLE}
           </a>
         </div>
       </div>

@@ -66,13 +66,19 @@ export const packagingImages: Record<string, ProductImage> = {
   cart_standard_balance_tropical: img(cartStandardBalanceTropical, cartStandardBalanceTropicalSm),
   cart_standard_calm_lavender: img(cartStandardCalmLavender, cartStandardCalmLavenderSm),
   cart_standard_uplift_mango: img(cartStandardUpliftMango, cartStandardUpliftMangoSm),
-  edible_brownies_balance_seasalt: img(edibleBrowniesBalanceSeasalt, edibleBrowniesBalanceSeasaltSm),
+  edible_brownies_balance_seasalt: img(
+    edibleBrowniesBalanceSeasalt,
+    edibleBrowniesBalanceSeasaltSm,
+  ),
   edible_brownies_calm_dark: img(edibleBrowniesCalmDark, edibleBrowniesCalmDarkSm),
   edible_brownies_uplift_almond: img(edibleBrowniesUpliftAlmond, edibleBrowniesUpliftAlmondSm),
   edible_cookies_balance_choco: img(edibleCookiesBalanceChoco, edibleCookiesBalanceChocoSm),
   edible_cookies_calm_lavender: img(edibleCookiesCalmLavender, edibleCookiesCalmLavenderSm),
   edible_cookies_uplift_honey: img(edibleCookiesUpliftHoney, edibleCookiesUpliftHoneySm),
-  edible_gummies_balance_tropical: img(edibleGummiesBalanceTropical, edibleGummiesBalanceTropicalSm),
+  edible_gummies_balance_tropical: img(
+    edibleGummiesBalanceTropical,
+    edibleGummiesBalanceTropicalSm,
+  ),
   edible_gummies_calm_blueberry: img(edibleGummiesCalmBlueberry, edibleGummiesCalmBlueberrySm),
   edible_gummies_uplift_citrus: img(edibleGummiesUpliftCitrus, edibleGummiesUpliftCitrusSm),
 };
