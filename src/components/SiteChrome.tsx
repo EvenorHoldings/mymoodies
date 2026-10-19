@@ -302,6 +302,14 @@ export function SiteFooter() {
             · Always Better. · Reg. No. K2025/717968 · CIPC South Africa · B-BBEE Level 2
           </p>
           <p>© {new Date().getFullYear()} Evenor Holdings (Pty) Ltd. All rights reserved.</p>
+          <p>
+            <a
+              href="https://evenor.org/ventures/moodies"
+              className="text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+            >
+              An Evenor Holdings venture
+            </a>
+          </p>
         </div>
       </div>
     </footer>
