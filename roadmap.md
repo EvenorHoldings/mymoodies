@@ -1,5 +1,7 @@
 # Roadmap
 
+- [ ] Add Moodies non-alcoholic cannabis-infused canned drinks at R70 each, with color-coded strengths and consistent product pages.
+
 - [ ] Restore the universal packaging wordmark and category-correct product images.
 - [ ] Verify all 22 product pages against their catalogue categories.
 - [ ] Add a downloadable Moodies brand guide and packaging/social logo files.
