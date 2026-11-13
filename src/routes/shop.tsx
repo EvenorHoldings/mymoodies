@@ -9,7 +9,7 @@ export const Route = createFileRoute("/shop")({
     mood: ["uplift", "calm", "balance", "neutral"].includes(String(search["mood"]))
       ? (search["mood"] as Mood)
       : undefined,
-    category: ["cartridge", "battery", "edible"].includes(String(search["category"]))
+    category: ["cartridge", "battery", "edible", "drink"].includes(String(search["category"]))
       ? (search["category"] as Category)
       : undefined,
   }),
@@ -21,12 +21,12 @@ export const Route = createFileRoute("/shop")({
       {
         name: "description",
         content:
-          "Browse Moodies cartridges, 510 batteries and home grown edibles. Filter by mood: Uplift, Calm, Balance. Prices in ZAR.",
+          "Browse Moodies cartridges, 510 batteries, edibles and cannabis-infused non-alcoholic sodas. Filter by mood and format. Prices in ZAR.",
       },
       { property: "og:title", content: "Shop All Products — Moodies" },
       {
         property: "og:description",
-        content: "Cartridges, batteries and edibles filtered by mood and category.",
+        content: "Cartridges, batteries, edibles and Moodies soda filtered by mood and category.",
       },
     ],
   }),
@@ -45,6 +45,7 @@ const categories: { value: Category | undefined; label: string }[] = [
   { value: "cartridge", label: "Cartridges" },
   { value: "battery", label: "Batteries" },
   { value: "edible", label: "Edibles" },
+  { value: "drink", label: "Drinks" },
 ];
 
 function Shop() {

@@ -9,11 +9,14 @@ import {
   batteryP107White,
   batteryP112Gold,
   batteryP112Steel,
+  moodiesCanMaroon,
+  moodiesCanOxblood,
+  moodiesCanScarlet,
   packagingImages,
 } from "@/assets/products";
 
 export type Mood = "uplift" | "calm" | "balance" | "neutral";
-export type Category = "cartridge" | "battery" | "edible";
+export type Category = "cartridge" | "battery" | "edible" | "drink";
 
 export type Product = {
   id: string;
@@ -46,6 +49,9 @@ export const subcategoryLabels: Record<string, string> = {
   gummies: "Gummies",
   cookies: "Cookies",
   brownies: "Brownies",
+  soda_oxblood: "Oxblood · 45 mg THC",
+  soda_maroon: "Maroon · Mild",
+  soda_scarlet: "Scarlet · Light",
 };
 
 const baseProducts: Product[] = [
@@ -365,6 +371,48 @@ const baseProducts: Product[] = [
     description: "Rich brownie with sea salt crunch. Cardboard sleeve.",
     spec: "1 \u00b7 25 \u00b7 25 \u00b7 Cardboard sleeve \u00b7 Artisanal",
     servings: "1 serving, 25mg",
+  },
+  {
+    id: "drink_soda_oxblood",
+    name: "MOODIES SODA — OXBLOOD",
+    category: "drink",
+    subcategory: "soda_oxblood",
+    mood: "neutral",
+    price: 70,
+    sku: "SODA-OXBLOOD-45",
+    image: moodiesCanOxblood.url,
+    imageAlt: "Moodies Oxblood cannabis-infused non-alcoholic soda can, 45 mg THC",
+    description: "Cannabis-infused, non-alcoholic Moodies soda. Oxblood strength, 45 mg THC.",
+    spec: "45 mg THC · Non-alcoholic · Cannabis-infused",
+    servings: "N/A",
+  },
+  {
+    id: "drink_soda_maroon",
+    name: "MOODIES SODA — MAROON",
+    category: "drink",
+    subcategory: "soda_maroon",
+    mood: "neutral",
+    price: 70,
+    sku: "SODA-MAROON-MILD",
+    image: moodiesCanMaroon.url,
+    imageAlt: "Moodies Maroon cannabis-infused non-alcoholic soda can, mild strength",
+    description: "Cannabis-infused, non-alcoholic Moodies soda. Maroon mild strength.",
+    spec: "Mild strength · Non-alcoholic · Cannabis-infused",
+    servings: "N/A",
+  },
+  {
+    id: "drink_soda_scarlet",
+    name: "MOODIES SODA — SCARLET",
+    category: "drink",
+    subcategory: "soda_scarlet",
+    mood: "neutral",
+    price: 70,
+    sku: "SODA-SCARLET-LIGHT",
+    image: moodiesCanScarlet.url,
+    imageAlt: "Moodies Scarlet cannabis-infused non-alcoholic soda can, lighter strength",
+    description: "Cannabis-infused, non-alcoholic Moodies soda. Scarlet lighter strength.",
+    spec: "Lighter strength · Non-alcoholic · Cannabis-infused",
+    servings: "N/A",
   },
 ];
 

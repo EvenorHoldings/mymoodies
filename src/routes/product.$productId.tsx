@@ -122,7 +122,7 @@ function ProductDetail() {
           <div className="flex items-center gap-3">
             <span className={`h-2 w-8 ${moodBg(product.mood)}`} aria-hidden />
             <span className="text-[11px] uppercase tracking-[0.18em] text-muted-foreground">
-              {moodLabels[product.mood]} ·{" "}
+              {product.category === "drink" ? "Cannabis-infused, non-alcoholic" : moodLabels[product.mood]} ·{" "}
               {subcategoryLabels[product.subcategory] ?? product.category}
             </span>
           </div>

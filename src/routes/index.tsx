@@ -25,7 +25,7 @@ import {
   ediblesImage,
   wholesaleImage,
 } from "@/assets/editorial";
-import { batteryP112Gold, packagingImages } from "@/assets/products";
+import { batteryP112Gold, moodiesCanOxblood, packagingImages } from "@/assets/products";
 import { INSTAGRAM_HANDLE, INSTAGRAM_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/")({
@@ -36,12 +36,12 @@ export const Route = createFileRoute("/")({
       {
         name: "description",
         content:
-          "Shop premium, independently tested edibles, cartridges and devices curated for Uplift, Calm and Balance. Discreet delivery across South Africa.",
+          "Shop premium edibles, cartridges, 510 batteries and cannabis-infused non-alcoholic Moodies soda. Discreet delivery across South Africa.",
       },
       { property: "og:title", content: "Moodies | Your Mood, Refined" },
       {
         property: "og:description",
-        content: "Premium mood-led edibles, cartridges and devices for adults in South Africa.",
+        content: "Mood-led edibles, cartridges, 510 batteries and non-alcoholic cannabis-infused drinks for adults in South Africa.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -95,6 +95,13 @@ const categories = [
     copy: "Home grown gummies, cookies and brownies with the dose printed clearly on every pack.",
     image: packagingImages["edible_gummies_uplift_citrus"]!,
     alt: "Moodies Uplift citrus gummies pouch with gummies in front",
+  },
+  {
+    category: "drink",
+    title: "Drinks",
+    copy: "Cannabis-infused, non-alcoholic Moodies soda in three color-coded strengths.",
+    image: moodiesCanOxblood,
+    alt: "Moodies Oxblood cannabis-infused non-alcoholic soda can",
   },
 ] as const;
 
@@ -248,7 +255,7 @@ function MoodCollections() {
           title="Find the feeling that fits today."
           copy="Three considered collections. One clearer way to choose."
         />
-        <div className="mt-14 grid gap-5 md:grid-cols-3">
+        <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
           {moods.map((item) => (
             <Link
               key={item.mood}

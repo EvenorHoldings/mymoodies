@@ -42,6 +42,12 @@ import p112Gold from "./battery-p112-gold.webp";
 import p112GoldSm from "./battery-p112-gold-800.webp";
 import p112Steel from "./battery-p112-steel.webp";
 import p112SteelSm from "./battery-p112-steel-800.webp";
+import moodiesCanMaroonPhoto from "./moodies-can-maroon.jpg";
+import moodiesCanMaroonSmall from "./moodies-can-maroon-800.webp";
+import moodiesCanOxbloodPhoto from "./moodies-can-oxblood.jpg";
+import moodiesCanOxbloodSmall from "./moodies-can-oxblood-800.webp";
+import moodiesCanScarletPhoto from "./moodies-can-scarlet.jpg";
+import moodiesCanScarletSmall from "./moodies-can-scarlet-800.webp";
 
 export type ProductImage = { url: string; small: string; width: number; height: number };
 const img = (url: string, small: string): ProductImage => ({
@@ -55,6 +61,9 @@ export const batteryP107Black = img(p107Black, p107BlackSm);
 export const batteryP107White = img(p107White, p107WhiteSm);
 export const batteryP112Gold = img(p112Gold, p112GoldSm);
 export const batteryP112Steel = img(p112Steel, p112SteelSm);
+export const moodiesCanMaroon = img(moodiesCanMaroonPhoto, moodiesCanMaroonSmall);
+export const moodiesCanOxblood = img(moodiesCanOxbloodPhoto, moodiesCanOxbloodSmall);
+export const moodiesCanScarlet = img(moodiesCanScarletPhoto, moodiesCanScarletSmall);
 
 export const packagingImages: Record<string, ProductImage> = {
   cart_live_balance_berry: img(cartLiveBalanceBerry, cartLiveBalanceBerrySm),
